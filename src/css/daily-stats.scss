@@ -1,0 +1,58 @@
+@import "colors.css";
+
+#daily-stats-container {
+	text-align: center;
+
+	#daily-stats-subheader {
+		a {
+			color: var(--box-color-1);
+		}
+	}
+
+	#daily-stats {
+		height: 100vh;
+		max-height: 500px;
+		display: flex;
+		gap: 20px;
+		overflow-y: auto;
+
+		& > div {
+			display: flex;
+			flex: 1;
+			flex-direction: column;
+			gap: 2px;
+
+			// clickable card name:
+			&:first-child {
+				.stats-row {
+					& > div:first-child:hover {
+						cursor: pointer;
+					}
+				}
+			}
+
+			.stats-row {
+				display: flex;
+				gap: 2px;
+
+				& > div {
+					min-width: 50px;
+					background-color: var(--box-color-1);
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					font-weight: bold;
+
+					&:first-child {
+						flex: 1;
+					}
+
+					&:last-child {
+						font-weight: normal;
+						font-style: italic;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,32 @@
+#journal details,
+#journal summary {
+  padding: 10px;
+}
+
+#journal summary:hover {
+  cursor: pointer;
+}
+
+#journal > details {
+  border-bottom: 2px solid var(--accent-2);
+}
+
+#journal > details > summary {
+  color: white !important;
+}
+
+#journal > details details {
+  border-top: 1px solid var(--accent-2);
+}
+
+#journal > details details *:not(summary):not(button) {
+  font-style: italic;
+  font-weight: normal;
+  padding-left: 20px;
+}
+
+#journal .remove-line-button {
+  min-width: auto !important;
+  margin-left: 10px;
+}
+/*# sourceMappingURL=journal.css.map */

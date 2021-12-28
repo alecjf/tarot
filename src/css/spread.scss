@@ -1,0 +1,138 @@
+#spread-container {
+	#phrases {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		& > * > div {
+			display: flex;
+			align-items: center;
+		}
+
+		#cards {
+			background-color: var(--header-footer-color);
+			color: var(--header-footer-text-color);
+
+			.card-image-container {
+				height: var(--card-height);
+				width: var(--card-width);
+				justify-content: center;
+			}
+		}
+
+		#lines {
+			flex: 1;
+
+			& > div {
+				background-color: var(--box-color-1);
+				border: 1px solid var(--accent-1);
+			}
+
+			.lines-item {
+				height: var(--card-height);
+				display: flex;
+
+				.card-name {
+					height: 100%;
+					border-left: 2px solid var(--accent-1);
+					color: var(--header-footer-text-color);
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					transform: rotate(180deg);
+					text-orientation: mixed;
+					writing-mode: vertical-rl;
+					white-space: nowrap;
+				}
+
+				.phrases {
+					height: 100%;
+					width: 100%;
+					line-height: 1.5em;
+					overflow: auto;
+					padding: 0 15px;
+				}
+			}
+
+			#footer,
+			#header {
+				height: calc(var(--card-height) / 2);
+				background-color: var(--header-footer-color);
+				border: none;
+				justify-content: center;
+				text-align: center;
+			}
+
+			#header {
+				flex-direction: column;
+				gap: 5px;
+
+				#spread-size {
+					flex-direction: row;
+					gap: 10px;
+				}
+			}
+		}
+	}
+
+	#spread-data {
+		text-align: center;
+
+		#histogram {
+			width: 100%;
+			display: flex;
+
+			.histo-column {
+				border: 1px solid var(--accent-2);
+				flex: 1;
+
+				.histo-subheader {
+					background-color: var(--header-footer-color);
+				}
+
+				.histo-value {
+					background-color: var(--box-color-1);
+					color: var(--accent-2);
+					font-weight: bold;
+				}
+			}
+		}
+
+		.counts {
+			.counts-row {
+				display: flex;
+
+				.count-col {
+					border: 1px solid var(--accent-2);
+					flex: 1;
+					text-align: center;
+
+					.count-header {
+						background-color: var(--header-footer-color);
+						color: var(--header-footer-text-color);
+					}
+
+					.count-value {
+						background-color: var(--box-color-1);
+						color: var(--accent-2);
+						font-weight: bold;
+					}
+				}
+			}
+		}
+
+		.common-words {
+			text-align: left;
+
+			ul {
+				margin: 0;
+
+				li {
+					span {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@400&display=swap");
+@import url("colors.css");
+body {
+  --card-height: 200px;
+  --card-width: calc(var(--card-height) * 0.58333);
+  background-color: var(--accent-2);
+  font-family: Oxygen, sans-serif;
+  font-size: 0.85em;
+  line-height: 1.8em;
+  margin: 0 0 50px;
+}
+
+body,
+body * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body #root {
+  max-width: 600px;
+  margin: auto;
+}
+
+body #root .App {
+  background-color: transparent;
+}
+
+body #root .App > * {
+  background-color: var(--accent-1);
+}
+
+body #root .App #app-header {
+  background-color: transparent !important;
+  font-size: 3rem;
+  text-align: center;
+  text-shadow: 0.1em 0.025em 0.05em var(--accent-1);
+}
+
+body #root .App .card-button {
+  background-color: transparent;
+  border: 0;
+  color: white !important;
+}
+
+body #root .App .card-button:hover {
+  color: var(--header-footer-text-color) !important;
+  cursor: pointer;
+}
+
+body #root .App #card-lookup {
+  padding-top: 30px;
+  text-align: center;
+}
+
+body #root .App #card-lookup h3 {
+  margin: 0;
+}
+
+body #root .App #card-lookup hr {
+  margin: 30px auto;
+}
+
+body #root .App #card-lookup img {
+  max-width: 200px;
+  height: auto;
+}
+
+body #root .App #card-lookup #no-words {
+  padding: 0 10px 30px;
+}
+
+body #root .App .card-name:hover,
+body #root .App div:not(#card-lookup) > img:hover {
+  cursor: pointer;
+}
+
+body #root .App .card-name,
+body #root .App #card-words-header,
+body #root .App #daily-stats-header,
+body #root .App .histo-header,
+body #root .App #ranks-header,
+body #root .App .stat-column-header,
+body #root .App #suits-header {
+  background-color: var(--accent-2);
+}
+
+body #root .App #card-lookup,
+body #root .App .common-words,
+body #root .App .custom-header,
+body #root .App #daily-stats-subheader,
+body #root .App #empty-custom,
+body #root .App #journal,
+body #root .App #phrases #lines #header,
+body #root .App #sign-in-screen,
+body #root .App .spread-words {
+  color: var(--header-footer-text-color);
+  font-weight: bold;
+  text-shadow: 0.15em 0.1em 0.1em var(--accent-2);
+}
+
+body #root .App #card-words-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+body #root .App .common-words,
+body #root .App #daily-stats-subheader {
+  padding: 15px 10px;
+}
+
+body #root .App .custom-header {
+  color: var(--header-footer-text-color);
+  font-family: Oswald, sans-serif;
+  text-transform: uppercase;
+}
+
+body #root .App .custom-limit {
+  color: white;
+  text-decoration: underline;
+}
+
+body #root .App .dim {
+  color: var(--dim-color) !important;
+  font-weight: normal !important;
+}
+
+body #root .App #empty-custom {
+  padding: 10px 10px 30px;
+  text-align: center;
+}
+
+body #root .App #empty-custom hr {
+  margin: 30px auto;
+}
+
+body #root .App #empty-custom button,
+body #root .App .flip-button,
+body #root .App #phrases #lines #header button,
+body #root .App .remove-line-button,
+body #root .App #sign-in-screen button,
+body #root .App #spread-size button {
+  min-width: 100px;
+  border: 2px solid white !important;
+  border-radius: 3px;
+}
+
+body #root .App #empty-custom button:hover,
+body #root .App .flip-button:hover,
+body #root .App #phrases #lines #header button:hover,
+body #root .App .remove-line-button:hover,
+body #root .App #sign-in-screen button:hover,
+body #root .App #spread-size button:hover {
+  border-color: var(--accent-2) !important;
+}
+
+body #root .App #empty-custom button,
+body #root .App .flip-button,
+body #root .App #navigation button,
+body #root .App #phrases #lines #header button,
+body #root .App .remove-line-button,
+body #root .App #sign-in-screen button,
+body #root .App #spread-size button {
+  background-color: var(--box-color-1);
+  border: 0;
+  text-shadow: 0.15em 0.1em 0.1em var(--header-footer-text-color);
+  color: var(--accent-2);
+  font-family: Oswald, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+body #root .App #empty-custom button.active, body #root .App #empty-custom button:hover,
+body #root .App .flip-button.active,
+body #root .App .flip-button:hover,
+body #root .App #navigation button.active,
+body #root .App #navigation button:hover,
+body #root .App #phrases #lines #header button.active,
+body #root .App #phrases #lines #header button:hover,
+body #root .App .remove-line-button.active,
+body #root .App .remove-line-button:hover,
+body #root .App #sign-in-screen button.active,
+body #root .App #sign-in-screen button:hover,
+body #root .App #spread-size button.active,
+body #root .App #spread-size button:hover {
+  background-color: var(--accent-1);
+  color: var(--header-footer-text-color);
+  cursor: pointer;
+  text-shadow: 0.15em 0.1em 0.1em var(--accent-2);
+}
+
+body #root .App h3.custom-header {
+  margin: 0;
+}
+
+body #root .App hr {
+  height: 2px;
+  width: 40%;
+  background-color: var(--accent-2);
+  border: 0;
+}
+
+body #root .App img {
+  height: auto;
+  width: 100%;
+  border: 1px solid var(--accent-1);
+  border-radius: 10px;
+  padding: 2px;
+  text-align: center;
+}
+
+body #root .App img.reversed {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+body #root .App select {
+  background-color: var(--box-color-1);
+  border: 0;
+  color: var(--accent-1);
+  font-size: 1.2rem;
+  padding: 0 10px;
+  text-align: center;
+}
+
+body #root .App #sign-in-screen button {
+  margin: 10px 0;
+}
+
+body #root .App #spread-size {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+
+body #root .App #spread-size > * {
+  max-width: 100px;
+  margin: 0 auto;
+}
+/*# sourceMappingURL=style.css.map */

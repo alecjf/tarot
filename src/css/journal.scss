@@ -1,0 +1,35 @@
+#journal {
+	details,
+	summary {
+		padding: 10px;
+	}
+
+	summary {
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	& > details {
+		border-bottom: 2px solid var(--accent-2);
+
+		& > summary {
+			color: white !important;
+		}
+
+		details {
+			border-top: 1px solid var(--accent-2);
+
+			*:not(summary):not(button) {
+				font-style: italic;
+				font-weight: normal;
+				padding-left: 20px;
+			}
+		}
+	}
+
+	.remove-line-button {
+		min-width: auto !important;
+		margin-left: 10px;
+	}
+}

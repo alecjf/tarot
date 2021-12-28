@@ -1,0 +1,31 @@
+@import url("colors.css");
+
+#sign-in-screen {
+	max-width: 400px;
+	background-color: var(--accent-1);
+	margin: auto;
+	padding: 20px;
+	text-align: center;
+
+	.user-form {
+		max-width: 300px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		margin: auto;
+
+		label {
+			display: flex;
+			text-align: right;
+
+			& > * {
+				flex: 1;
+			}
+
+			.custom-header {
+				max-width: 80px;
+				padding-right: 10px;
+			}
+		}
+	}
+}

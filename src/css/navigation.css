@@ -1,0 +1,31 @@
+#navigation {
+  background-color: var(--accent-2);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 3px;
+  padding-bottom: 3px;
+}
+
+#navigation > * {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+#navigation #user-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#navigation #user-info > * {
+  width: 100%;
+  padding: 0 5px;
+  text-align: center;
+}
+/*# sourceMappingURL=navigation.css.map */
