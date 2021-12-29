@@ -41,17 +41,24 @@ body #root .App .card-button,
 body #root .App .word-button {
   background-color: transparent;
   border: 0;
+  font-size: 0.85rem;
 }
 
 body #root .App .card-button.card-button,
 body #root .App .word-button.card-button {
   color: white !important;
+  padding: 0 3px;
 }
 
 body #root .App .card-button.card-button:hover,
 body #root .App .word-button.card-button:hover {
   color: var(--header-footer-text-color) !important;
   cursor: pointer;
+}
+
+body #root .App .card-button.word-button,
+body #root .App .word-button.word-button {
+  padding: 0;
 }
 
 body #root .App .card-button.word-button:hover,

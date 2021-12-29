@@ -1,5 +1,5 @@
 import "../css/journal.css";
-import { useEffect, useState } from "react/cjs/react.development";
+import { useEffect, useState } from "react";
 import {
 	collection,
 	deleteDoc,
@@ -112,9 +112,10 @@ function Journal({ userID, cardLinkHandler }) {
 																cardNames:
 																	pairNames,
 																cardLinkHandler,
-																delim: ", ",
+																delim: " — ",
 															}}
 														/>
+														{" —"}
 														<button
 															className="remove-line-button"
 															onClick={() =>

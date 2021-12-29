@@ -1,9 +1,9 @@
 #navigation {
-  background-color: var(--accent-2);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 3px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   padding-bottom: 3px;
 }
 
@@ -11,6 +11,7 @@
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  margin: 0 2px;
 }
 
 #navigation #user-info {

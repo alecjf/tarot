@@ -1,11 +1,11 @@
 #navigation {
-	background-color: var(--accent-2);
 	display: flex;
-	gap: 3px;
+	flex-wrap: wrap;
 	padding-bottom: 3px;
 
 	& > * {
 		flex: 1;
+		margin: 0 2px;
 	}
 
 	#user-info {
