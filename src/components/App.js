@@ -20,7 +20,7 @@ import { writeCustomSpreads } from "../scripts/cloud";
 import phrasesData from "../scripts/phrases-data";
 import processDailyReadings from "../scripts/daily-stats";
 import cards, { allWords } from "../scripts/data/cards";
-import { reverseCard } from "../scripts/data/opposites";
+import { flipUpright } from "../scripts/data/opposites";
 import { randomItem } from "../scripts/misc";
 import Header from "./Header";
 import SignIn from "./SignIn/SignIn";
@@ -212,14 +212,21 @@ function App() {
 				const copy = { ...spreads };
 				if (enterCards) {
 					let entered = [
-						...document.getElementsByClassName("enter-card"),
-					]
-						.map((elem) => elem.value)
-						.filter(
-							(cardName, i, a) =>
-								cardName !== "PICK CARD" &&
-								!a.includes(reverseCard(cardName))
-						);
+						...new Set(
+							[...document.getElementsByClassName("enter-card")]
+								.map((elem) => elem.value)
+								.filter(
+									(cardName, _, arr) =>
+										cardName !== "PICK CARD" &&
+										// check if reversed card has upright version in spread:
+										(cardName.includes(" reversed")
+											? !arr.includes(
+													flipUpright(cardName)
+											  )
+											: true)
+								)
+						),
+					];
 					if (entered.length < 2) {
 						alert("Must pick at least 2 distinct cards.");
 						return;
@@ -227,6 +234,7 @@ function App() {
 						[...entered].sort().join(", ") ===
 						[...copy["enter-cards"]].sort().join(", ")
 					) {
+						alert("No new cards selected. Check for duplicates.");
 						return;
 					} else {
 						copy["enter-cards"] = entered;

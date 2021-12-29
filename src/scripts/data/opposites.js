@@ -75,9 +75,9 @@ const reverseWord = (word) =>
 
 const reverseWords = (words) =>
 	words
-		.map((word) => reverseWord(word))
-		.flat()
 		.map((word) => nounify(word))
+		.flat()
+		.map((word) => reverseWord(word))
 		.flat();
 
 const flipUpright = (cardName) => cardName.replace(" reversed", "");

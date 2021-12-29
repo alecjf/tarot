@@ -1524,7 +1524,7 @@ function updateCards(cards) {
 		})),
 		...cards.map((card) => ({
 			name: card.name + " reversed",
-			words: reverseWords(card.words),
+			words: reverseWords(card.words).sort(),
 		})),
 	];
 }
