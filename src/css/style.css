@@ -37,41 +37,31 @@ body #root .App #app-header {
   text-shadow: 0.1em 0.025em 0.05em var(--accent-1);
 }
 
-body #root .App .card-button {
+body #root .App .card-button,
+body #root .App .word-button {
   background-color: transparent;
   border: 0;
+}
+
+body #root .App .card-button.card-button,
+body #root .App .word-button.card-button {
   color: white !important;
 }
 
-body #root .App .card-button:hover {
+body #root .App .card-button.card-button:hover,
+body #root .App .word-button.card-button:hover {
   color: var(--header-footer-text-color) !important;
   cursor: pointer;
 }
 
-body #root .App #card-lookup {
-  padding-top: 30px;
-  text-align: center;
-}
-
-body #root .App #card-lookup h3 {
-  margin: 0;
-}
-
-body #root .App #card-lookup hr {
-  margin: 30px auto;
-}
-
-body #root .App #card-lookup img {
-  max-width: 200px;
-  height: auto;
-}
-
-body #root .App #card-lookup #no-words {
-  padding: 0 10px 30px;
+body #root .App .card-button.word-button:hover,
+body #root .App .word-button.word-button:hover {
+  color: white;
+  cursor: pointer;
 }
 
 body #root .App .card-name:hover,
-body #root .App div:not(#card-lookup) > img:hover {
+body #root .App div:not(#lookup-card) > img:hover {
   cursor: pointer;
 }
 
@@ -85,7 +75,7 @@ body #root .App #suits-header {
   background-color: var(--accent-2);
 }
 
-body #root .App #card-lookup,
+body #root .App #lookup-card,
 body #root .App .common-words,
 body #root .App .custom-header,
 body #root .App #daily-stats-subheader,
@@ -93,7 +83,8 @@ body #root .App #empty-custom,
 body #root .App #journal,
 body #root .App #phrases #lines #header,
 body #root .App #sign-in-screen,
-body #root .App .spread-words {
+body #root .App .spread-words,
+body #root .App .word-button {
   color: var(--header-footer-text-color);
   font-weight: bold;
   text-shadow: 0.15em 0.1em 0.1em var(--accent-2);
@@ -212,6 +203,33 @@ body #root .App img {
 body #root .App img.reversed {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
+}
+
+body #root .App #lookup-card,
+body #root .App #lookup-word {
+  padding-top: 30px;
+  text-align: center;
+}
+
+body #root .App #lookup-card h3,
+body #root .App #lookup-word h3 {
+  margin: 0;
+}
+
+body #root .App #lookup-card hr,
+body #root .App #lookup-word hr {
+  margin: 30px auto;
+}
+
+body #root .App #lookup-card img,
+body #root .App #lookup-word img {
+  max-width: 200px;
+  height: auto;
+}
+
+body #root .App #lookup-card #no-words,
+body #root .App #lookup-word #no-words {
+  padding: 0 10px 30px;
 }
 
 body #root .App select {

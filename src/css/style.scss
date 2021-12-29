@@ -34,41 +34,30 @@ body {
 				text-shadow: 0.1em 0.025em 0.05em var(--accent-1);
 			}
 
-			.card-button {
+			.card-button,
+			.word-button {
 				background-color: transparent;
 				border: 0;
-				color: white !important;
 
-				&:hover {
-					color: var(--header-footer-text-color) !important;
-					cursor: pointer;
-				}
-			}
+				&.card-button {
+					color: white !important;
 
-			#card-lookup {
-				padding-top: 30px;
-				text-align: center;
-
-				h3 {
-					margin: 0;
+					&:hover {
+						color: var(--header-footer-text-color) !important;
+						cursor: pointer;
+					}
 				}
 
-				hr {
-					margin: 30px auto;
-				}
-
-				img {
-					max-width: 200px;
-					height: auto;
-				}
-
-				#no-words {
-					padding: 0 10px 30px;
+				&.word-button {
+					&:hover {
+						color: white;
+						cursor: pointer;
+					}
 				}
 			}
 
 			.card-name,
-			div:not(#card-lookup) > img {
+			div:not(#lookup-card) > img {
 				&:hover {
 					cursor: pointer;
 				}
@@ -84,7 +73,7 @@ body {
 				background-color: var(--accent-2);
 			}
 
-			#card-lookup,
+			#lookup-card,
 			.common-words,
 			.custom-header,
 			#daily-stats-subheader,
@@ -92,7 +81,8 @@ body {
 			#journal,
 			#phrases #lines #header,
 			#sign-in-screen,
-			.spread-words {
+			.spread-words,
+			.word-button {
 				color: var(--header-footer-text-color);
 				font-weight: bold;
 				text-shadow: 0.15em 0.1em 0.1em var(--accent-2);
@@ -194,6 +184,29 @@ body {
 
 				&.reversed {
 					transform: rotate(180deg);
+				}
+			}
+
+			#lookup-card,
+			#lookup-word {
+				padding-top: 30px;
+				text-align: center;
+
+				h3 {
+					margin: 0;
+				}
+
+				hr {
+					margin: 30px auto;
+				}
+
+				img {
+					max-width: 200px;
+					height: auto;
+				}
+
+				#no-words {
+					padding: 0 10px 30px;
 				}
 			}
 

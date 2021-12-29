@@ -12,7 +12,7 @@
 				td {
 					background-color: var(--accent-1);
 
-					button {
+					button:not(.word-button) {
 						display: block;
 						text-align: left;
 					}

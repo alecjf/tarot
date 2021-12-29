@@ -1,4 +1,4 @@
-import { nounify } from "../misc";
+import { getAdjs, nounify } from "../misc";
 import { reverseWords } from "./opposites";
 
 let cards = [
@@ -1531,4 +1531,15 @@ function updateCards(cards) {
 
 cards = updateCards(cards);
 
+const allWords = [
+	...new Set(
+		cards
+			.map((card) =>
+				card.words.map((word) => [word, ...getAdjs(word)]).flat()
+			)
+			.flat()
+	),
+].sort();
+
 export default cards;
+export { allWords };

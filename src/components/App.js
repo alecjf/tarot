@@ -18,14 +18,15 @@ import auth, { signOutUser } from "../scripts/auth";
 import { writeCustomSpreads } from "../scripts/cloud";
 import phrasesData from "../scripts/phrases-data";
 import processDailyReadings from "../scripts/daily-stats";
-import cards from "../scripts/data/cards";
+import cards, { allWords } from "../scripts/data/cards";
 import { randomItem } from "../scripts/misc";
 import Header from "./Header";
 import SignIn from "./SignIn/SignIn";
 import Register from "./SignIn/Register";
 import Spread from "./Spread/Spread";
-import CardLookup from "./CardLookup";
+import LookupCard from "./LookupCard";
 import Journal from "./Journal";
+import LookupWord from "./LookupWord";
 
 function App() {
 	const [loaded, setLoaded] = useState(false),
@@ -38,14 +39,24 @@ function App() {
 		}),
 		[dailyStats, setDailyStats] = useState(undefined),
 		[customSpreads, setCustomSpreads] = useState(undefined),
-		[singleCard, setSingleCard] = useState(randomItem(cards).name),
+		[lookupCard, setLookupCard] = useState(randomItem(cards).name),
 		cardLinkHandler = (cardName) => {
-			setSingleCard(cardName);
-			setView("card-lookup");
+			setLookupCard(cardName);
+			setView("lookup-card");
+		},
+		[lookupWord, setLookupWord] = useState(allWords[0]),
+		wordLinkHandler = (word) => {
+			setLookupWord(word);
+			setView("lookup-word");
 		},
 		SignOutButton = () => (
 			<button onClick={() => signOutUser()}>Sign Out</button>
 		);
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+		document.getElementsByTagName("select")[0]?.focus();
+	});
 
 	useEffect(() => {
 		onAuthStateChanged(auth, (user) => {
@@ -162,11 +173,19 @@ function App() {
 					</button>
 					<button
 						className={`nav-button ${
-							view === "card-lookup" ? "active" : ""
+							view === "lookup-card" ? "active" : ""
 						}`}
 						onClick={(e) => navButtonHandler(e)}
 					>
-						CARD LOOKUP
+						LOOKUP CARD
+					</button>
+					<button
+						className={`nav-button ${
+							view === "lookup-word" ? "active" : ""
+						}`}
+						onClick={(e) => navButtonHandler(e)}
+					>
+						LOOKUP WORD
 					</button>
 					<button
 						className={`nav-button ${
@@ -227,12 +246,17 @@ function App() {
 				<Navigation />
 				{view === "spread-journal" ? (
 					<Journal {...{ userID, cardLinkHandler }} />
-				) : view === "card-lookup" ? (
-					<CardLookup
+				) : view === "lookup-card" ? (
+					<LookupCard
 						{...{
-							singleCard,
+							lookupCard,
 							cardLinkHandler,
+							wordLinkHandler,
 						}}
+					/>
+				) : view === "lookup-word" ? (
+					<LookupWord
+						{...{ lookupWord, cardLinkHandler, wordLinkHandler }}
 					/>
 				) : (
 					<Spread
@@ -243,6 +267,7 @@ function App() {
 							userID,
 							dailyStats,
 							cardLinkHandler,
+							wordLinkHandler,
 							customSpreads,
 							plan,
 							setPlan,

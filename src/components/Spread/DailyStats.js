@@ -1,6 +1,6 @@
 import { cardSorter } from "../../scripts/spread-data";
 
-function DailyStats({ dailyStats, cardLinkHandler }) {
+function DailyStats({ dailyStats, cardLinkHandler, wordLinkHandler }) {
 	const { cardFreq, wordFreq, totalCards, totalWords } = dailyStats;
 
 	function StatColumn({ header, freqs, total }) {
@@ -25,7 +25,9 @@ function DailyStats({ dailyStats, cardLinkHandler }) {
 					<div key={`${header} ${item}`} className="stats-row">
 						<div
 							onClick={() =>
-								header === "Cards" && cardLinkHandler(item)
+								header === "Cards"
+									? cardLinkHandler(item)
+									: wordLinkHandler(item)
 							}
 						>
 							{item}

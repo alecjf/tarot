@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useMemo } from "react";
 import cards from "../scripts/data/cards";
 import { flipUpright } from "../scripts/data/opposites";
 import { randomItem } from "../scripts/misc";
 import { cardSorter } from "../scripts/spread-data";
-import CardButtons from "./CardButtons";
+import CardButtons from "./ButtonCards";
 import CardImage from "./CardImage";
 import SpreadWords from "./SpreadWords";
 
-function CardLookup({ singleCard, cardLinkHandler }) {
-	const card = cards.find((card) => card.name === singleCard),
+function LookupCard({ lookupCard, cardLinkHandler, wordLinkHandler }) {
+	const card = cards.find((card) => card.name === lookupCard),
 		reverseCard = (cardName) =>
 			cardName.includes(" reversed")
 				? flipUpright(cardName)
@@ -17,9 +17,9 @@ function CardLookup({ singleCard, cardLinkHandler }) {
 	function AllCardsSelect() {
 		return (
 			<select
-				key={`all-cards-select-${singleCard}`}
+				key={`all-cards-select-${lookupCard}`}
 				onChange={(e) => cardLinkHandler(e.target.value)}
-				defaultValue={singleCard}
+				defaultValue={lookupCard}
 			>
 				{cards
 					.map((card) => card.name)
@@ -37,7 +37,7 @@ function CardLookup({ singleCard, cardLinkHandler }) {
 		return (
 			<button
 				className="flip-button"
-				onClick={() => cardLinkHandler(reverseCard(singleCard))}
+				onClick={() => cardLinkHandler(reverseCard(lookupCard))}
 			>
 				Flip
 			</button>
@@ -55,12 +55,14 @@ function CardLookup({ singleCard, cardLinkHandler }) {
 		);
 	}
 
+	const selectCard = useMemo(() => <AllCardsSelect />, []);
+
 	return (
-		<div id="card-lookup">
-			<AllCardsSelect />
+		<div id="lookup-card">
+			{selectCard}
 			<br />
 			<br />
-			<CardImage {...{ cardName: singleCard, cardLinkHandler }} />
+			<CardImage {...{ cardName: lookupCard, cardLinkHandler }} />
 			<br />
 			<br />
 			<FlipCardButton /> <RandomCardButton />
@@ -68,8 +70,9 @@ function CardLookup({ singleCard, cardLinkHandler }) {
 			{card.words.length ? (
 				<SpreadWords
 					{...{
-						cardNames: [singleCard],
+						cardNames: [lookupCard],
 						cardLinkHandler,
+						wordLinkHandler,
 					}}
 				/>
 			) : (
@@ -78,7 +81,7 @@ function CardLookup({ singleCard, cardLinkHandler }) {
 						No distinct words. Energy opposes{" "}
 						<CardButtons
 							{...{
-								cardNames: [reverseCard(singleCard)],
+								cardNames: [reverseCard(lookupCard)],
 								cardLinkHandler,
 							}}
 						/>
@@ -89,4 +92,4 @@ function CardLookup({ singleCard, cardLinkHandler }) {
 	);
 }
 
-export default CardLookup;
+export default LookupCard;

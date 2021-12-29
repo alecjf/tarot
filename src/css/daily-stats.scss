@@ -22,12 +22,10 @@
 			flex-direction: column;
 			gap: 2px;
 
-			// clickable card name:
-			&:first-child {
-				.stats-row {
-					& > div:first-child:hover {
-						cursor: pointer;
-					}
+			// clickable card name or word:
+			.stats-row {
+				& > div:first-child:hover {
+					cursor: pointer;
 				}
 			}
 

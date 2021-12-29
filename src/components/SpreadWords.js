@@ -1,15 +1,22 @@
 import "../css/spread-words.css";
 import React from "react";
+import spreadWordsData, { lookupWordData } from "../scripts/spread-words";
 import cards from "../scripts/data/cards";
-import spreadWords from "../scripts/spread-words";
-import CardButtons from "./CardButtons";
+import ButtonCards from "./ButtonCards";
+import ButtonWords from "./ButtonWords";
 
-function SpreadWords({ cardNames, cardLinkHandler }) {
+function SpreadWords({
+	cardNames,
+	cardLinkHandler,
+	wordLinkHandler,
+	lookupWord,
+}) {
 	const cardsInSpread = (cardNames) =>
 			cards.filter((card) => cardNames.includes(card.name)),
-		{ wordsInSpread, uniqueToCard, shared } = spreadWords(
-			cardsInSpread(cardNames)
-		);
+		compare = lookupWord
+			? lookupWordData(lookupWord)
+			: spreadWordsData(cardsInSpread(cardNames)),
+		{ wordsInSpread, uniqueToCard, shared } = compare;
 
 	function Words({ keys }) {
 		return (
@@ -23,10 +30,15 @@ function SpreadWords({ cardNames, cardLinkHandler }) {
 										wordsInSpread[word].opposites.length + 1
 									}
 								>
-									{word}
+									<ButtonWords
+										{...{
+											words: word.split(", "),
+											wordLinkHandler,
+										}}
+									/>
 								</td>
 								<td colSpan={2}>
-									<CardButtons
+									<ButtonCards
 										{...{
 											cardNames:
 												wordsInSpread[word].cards,
@@ -41,9 +53,18 @@ function SpreadWords({ cardNames, cardLinkHandler }) {
 									key={`opposite-${word}-${opposite.word}`}
 									className="opposite-row"
 								>
-									<td>{opposite.word}</td>
 									<td>
-										<CardButtons
+										<ButtonWords
+											{...{
+												words: opposite.word.split(
+													", "
+												),
+												wordLinkHandler,
+											}}
+										/>
+									</td>
+									<td>
+										<ButtonCards
 											{...{
 												cardNames: opposite.cards,
 												cardLinkHandler,
@@ -61,30 +82,38 @@ function SpreadWords({ cardNames, cardLinkHandler }) {
 
 	return (
 		<div className="spread-words">
-			{!(shared.noOpposites.length + shared.withOpposites.length) ? (
+			{!lookupWord &&
+			!(shared.noOpposites.length + shared.withOpposites.length) ? (
 				<>
 					<p>No available comparisons.</p>
 					<br />
 				</>
 			) : (
 				<>
-					{cardNames.length === 1 && !!uniqueToCard.length && (
-						<>
-							<h3 className="custom-header">
-								Words Unique to Card
-							</h3>
-							<Words keys={uniqueToCard} />
-						</>
-					)}
+					{(lookupWord || cardNames.length === 1) &&
+						!!uniqueToCard.length && (
+							<>
+								{!lookupWord && (
+									<h3 className="custom-header">
+										Words Unique to Card
+									</h3>
+								)}
+								<Words keys={uniqueToCard} />
+							</>
+						)}
 					{!!shared.noOpposites.length && (
 						<>
-							<h3 className="custom-header">Shared Words</h3>
+							{!lookupWord && (
+								<h3 className="custom-header">Shared Words</h3>
+							)}
 							<Words keys={shared.noOpposites} />
 						</>
 					)}
 					{!!shared.withOpposites.length && (
 						<>
-							<h3 className="custom-header">Opposites</h3>
+							{!lookupWord && (
+								<h3 className="custom-header">Opposites</h3>
+							)}
 							<Words keys={shared.withOpposites} />
 						</>
 					)}

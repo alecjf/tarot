@@ -21,6 +21,7 @@ function Spread({
 	userID,
 	dailyStats,
 	cardLinkHandler,
+	wordLinkHandler,
 	customSpreads,
 	plan,
 	setPlan,
@@ -50,6 +51,7 @@ function Spread({
 						userID,
 						cardNames,
 						cardLinkHandler,
+						wordLinkHandler,
 						DrawingStatus,
 					}}
 				/>
@@ -139,10 +141,17 @@ function Spread({
 						{...{
 							cardNames,
 							cardLinkHandler,
+							wordLinkHandler,
 						}}
 					/>
 					{dailyStats && view === "daily-spread" && (
-						<DailyStats {...{ dailyStats, cardLinkHandler }} />
+						<DailyStats
+							{...{
+								dailyStats,
+								cardLinkHandler,
+								wordLinkHandler,
+							}}
+						/>
 					)}
 				</>
 			) : view === "custom-spread" ? (

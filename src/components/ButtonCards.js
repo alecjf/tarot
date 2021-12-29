@@ -1,4 +1,4 @@
-function CardButtons({ cardNames, cardLinkHandler, delim }) {
+function ButtonCards({ cardNames, cardLinkHandler, delim }) {
 	const result = cardNames
 		.map((cardName) => [
 			<button
@@ -15,4 +15,4 @@ function CardButtons({ cardNames, cardLinkHandler, delim }) {
 	return result;
 }
 
-export default CardButtons;
+export default ButtonCards;

@@ -13,7 +13,7 @@
   background-color: var(--accent-1);
 }
 
-.spread-words table tr.opposite-row td button {
+.spread-words table tr.opposite-row td button:not(.word-button) {
   display: block;
   text-align: left;
 }

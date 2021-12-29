@@ -15,6 +15,8 @@ const getAdjs = (word) => getWordPart(word, 0);
 
 const getNouns = (word) => getWordPart(word, 1);
 
+// returns [word] if noun or adj w/o noun,
+// or possibly multiple nouns if adj has noun(s):
 const nounify = (word) => [
 	...new Set(
 		words
@@ -37,4 +39,4 @@ function randomPartOfSpeech(word) {
 	);
 }
 
-export { nounify, randomItem, randomize, randomizeSpeech };
+export { getAdjs, nounify, randomItem, randomize, randomizeSpeech };

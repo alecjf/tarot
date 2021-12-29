@@ -2,6 +2,7 @@ import React from "react";
 import { dateFormatter, writeInJournal } from "../../scripts/cloud";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import firestore from "../../scripts/cloud";
+import ButtonWords from "../ButtonWords";
 
 const months = [
 		"January",
@@ -27,6 +28,7 @@ function Lines({
 	userID,
 	cardNames,
 	cardLinkHandler,
+	wordLinkHandler,
 	DrawingStatus,
 }) {
 	async function journalHandler(e, pair) {
@@ -104,9 +106,21 @@ function Lines({
 										{func.key}
 									</button>
 									<br />
-									<b>Adjectives:</b> {func.pos.Adj.join(", ")}
+									<b>Adjectives:</b>{" "}
+									<ButtonWords
+										{...{
+											words: func.pos.Adj,
+											wordLinkHandler,
+										}}
+									/>
 									<br />
-									<b>Nouns:</b> {func.pos.Noun.join(", ")}
+									<b>Nouns:</b>{" "}
+									<ButtonWords
+										{...{
+											words: func.pos.Noun,
+											wordLinkHandler,
+										}}
+									/>
 									<br />
 									<b>People:</b> {func.people.join(", ")}
 									<br />

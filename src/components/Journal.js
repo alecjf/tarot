@@ -9,7 +9,7 @@ import {
 	updateDoc,
 } from "firebase/firestore";
 import firestore from "../scripts/cloud";
-import CardButtons from "./CardButtons";
+import CardButtons from "./ButtonCards";
 
 function Journal({ userID, cardLinkHandler }) {
 	const [journal, setJournal] = useState(undefined);

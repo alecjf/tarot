@@ -2,7 +2,7 @@ import cards from "./data/cards";
 import { cardSorter } from "./spread-data";
 import { reverseWord } from "./data/opposites";
 
-function spreadWords(spread) {
+function spreadWordsData(spread) {
 	const wordsInSpread = processSpread(spread);
 	condenseSpread(wordsInSpread);
 	return organizeSpread(wordsInSpread);
@@ -21,8 +21,12 @@ function processSpread(spread) {
 }
 
 function processCard(card, spread) {
+	return processWords(card.words, spread);
+}
+
+function processWords(words, spread) {
 	const result = {};
-	card.words.forEach((word) => {
+	words.forEach((word) => {
 		const [addCards, addOpposites] = cardsAndOpposites(word, spread);
 		result[word] = {
 			cards: addCards,
@@ -116,4 +120,10 @@ function organizeSpread(wordsInSpread) {
 	};
 }
 
-export default spreadWords;
+function lookupWordData(word) {
+	const result = processWords([word], cards);
+	return organizeSpread(result);
+}
+
+export default spreadWordsData;
+export { lookupWordData };
