@@ -103,7 +103,11 @@ function lastAndNextCard(cardsArr, selected) {
 	const lastCard = selected.length
 			? selected[selected.length - 1].cards[1]
 			: randomItem(cardsArr),
-		nextCard = randomItem(cardsArr);
+		nextCard = selected.length
+			? randomItem(cardsArr)
+			: randomItem(
+					cardsArr.filter((card) => card.name !== lastCard.name)
+			  );
 	return { lastCard, nextCard };
 }
 
