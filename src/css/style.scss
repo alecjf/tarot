@@ -82,6 +82,7 @@ body {
 			.custom-header,
 			#daily-stats-subheader,
 			#empty-custom,
+			#enter-cards,
 			#journal,
 			#phrases #lines #header,
 			#sign-in-screen,
@@ -118,16 +119,29 @@ body {
 				font-weight: normal !important;
 			}
 
-			#empty-custom {
-				padding: 10px 10px 30px;
+			#empty-custom,
+			#enter-cards {
 				text-align: center;
+
+				&#empty-custom {
+					padding: 10px 10px 30px;
+				}
+
+				&#enter-cards {
+					padding-top: 10px;
+				}
 
 				hr {
 					margin: 30px auto;
 				}
+
+				#spread-size {
+					margin-bottom: 22px;
+				}
 			}
 
 			#empty-custom button,
+			#enter-cards-buttons button,
 			.flip-button,
 			#phrases #lines #header button,
 			.remove-line-button,
@@ -143,6 +157,7 @@ body {
 			}
 
 			#empty-custom button,
+			#enter-cards-buttons button,
 			.flip-button,
 			#navigation button,
 			#phrases #lines #header button,

@@ -1,5 +1,6 @@
-import "../css/navigation.css";
 import "../css/sign-in-screen.css";
+import "../css/navigation.css";
+import "../css/enter-cards.css";
 import { useEffect, useState } from "react";
 import {
 	collection,
@@ -19,6 +20,7 @@ import { writeCustomSpreads } from "../scripts/cloud";
 import phrasesData from "../scripts/phrases-data";
 import processDailyReadings from "../scripts/daily-stats";
 import cards, { allWords } from "../scripts/data/cards";
+import { reverseCard } from "../scripts/data/opposites";
 import { randomItem } from "../scripts/misc";
 import Header from "./Header";
 import SignIn from "./SignIn/SignIn";
@@ -27,6 +29,9 @@ import Spread from "./Spread/Spread";
 import LookupCard from "./LookupCard";
 import Journal from "./Journal";
 import LookupWord from "./LookupWord";
+import SpreadWords from "./SpreadWords";
+import CardImage from "./CardImage";
+import { cardSorter } from "../scripts/spread-data";
 
 function App() {
 	const [loaded, setLoaded] = useState(false),
@@ -36,9 +41,11 @@ function App() {
 		[spreads, setSpreads] = useState({
 			"daily-spread": undefined,
 			"custom-spread": undefined,
+			"enter-cards": [],
 		}),
 		[dailyStats, setDailyStats] = useState(undefined),
-		[customSpreads, setCustomSpreads] = useState(undefined),
+		[customSpreads, setShowSpreads] = useState(undefined),
+		[customSpreadView, setShowSpreadView] = useState("random"),
 		[lookupCard, setLookupCard] = useState(randomItem(cards).name),
 		cardLinkHandler = (cardName) => {
 			setLookupCard(cardName);
@@ -119,14 +126,14 @@ function App() {
 
 				if (today) {
 					const { numberDrawn } = today.data();
-					setCustomSpreads(numberDrawn);
+					setShowSpreads(numberDrawn);
 				} else {
 					writeCustomSpreads({
 						userID: id,
 						date: new Date(),
 						numberDrawn: 0,
 					});
-					setCustomSpreads(0);
+					setShowSpreads(0);
 				}
 			}
 
@@ -200,44 +207,255 @@ function App() {
 			);
 		}
 
-		function SpreadSize({ phrases }) {
-			const spreadSizeHandler = () => {
-				if (plan === "paid" || customSpreads < 3) {
-					const copy = { ...spreads };
-					copy[view] = phrasesData(
-						document.querySelector("#select-size").value
-					);
-					setSpreads(copy);
-					if (plan === "free") {
-						setCustomSpreads(customSpreads + 1);
-						writeCustomSpreads({
-							userID,
-							date: new Date(),
-							numberDrawn: customSpreads + 1,
-						});
+		const spreadSizeHandler = (enterCards) => {
+			if (plan === "paid" || customSpreads < 3) {
+				const copy = { ...spreads };
+				if (enterCards) {
+					let entered = [
+						...document.getElementsByClassName("enter-card"),
+					]
+						.map((elem) => elem.value)
+						.filter(
+							(cardName, i, a) =>
+								cardName !== "PICK CARD" &&
+								!a.includes(reverseCard(cardName))
+						);
+					if (entered.length < 2) {
+						alert("Must pick at least 2 distinct cards.");
+						return;
+					} else if (
+						[...entered].sort().join(", ") ===
+						[...copy["enter-cards"]].sort().join(", ")
+					) {
+						return;
+					} else {
+						copy["enter-cards"] = entered;
 					}
 				} else {
-					alert(
-						"You have exceeded your custom spread limits for the day."
+					copy["custom-spread"] = phrasesData(
+						document.querySelector("#select-size").value
 					);
 				}
-			};
+				setSpreads(copy);
+				if (plan === "free") {
+					setShowSpreads(customSpreads + 1);
+					writeCustomSpreads({
+						userID,
+						date: new Date(),
+						numberDrawn: customSpreads + 1,
+					});
+				}
+			} else {
+				alert(
+					"You have exceeded your custom spread limits for the day."
+				);
+			}
+		};
 
-			return (
-				<div id="spread-size">
-					<h2 className="custom-header">Cards:</h2>
-					<select
-						id="select-size"
-						defaultValue={phrases ? phrases.length + 1 : 5}
+		function ShowSpread() {
+			function CustomSpreadOptions({ enterCards }) {
+				const result = [
+					<button
+						key="draw-random-button"
+						onClick={() =>
+							enterCards
+								? setShowSpreadView("random")
+								: spreadSizeHandler()
+						}
 					>
-						{Array.apply(null, Array(9)).map((_, i) => (
-							<option key={`size select ${i + 2}`} value={i + 2}>
-								{i + 2}
-							</option>
-						))}
-					</select>
-					<button onClick={() => spreadSizeHandler()}>DRAW</button>
-				</div>
+						DRAW RANDOM
+					</button>,
+					" OR ",
+					<button
+						key="compare-cards-button"
+						onClick={() =>
+							enterCards
+								? spreadSizeHandler(true)
+								: setShowSpreadView("enter")
+						}
+					>
+						COMPARE CARDS
+					</button>,
+				];
+				enterCards && result.reverse();
+				return result;
+			}
+
+			function DrawingStatus({ longVersion }) {
+				const PlanButton = () => (
+					<button
+						onClick={() => {
+							writePlan({ userID, plan: "paid" });
+							setPlan("paid");
+						}}
+					>
+						Upgrade
+					</button>
+				);
+
+				return plan === "free" ? (
+					longVersion ? (
+						<>
+							<p>
+								You have used{" "}
+								<span className="custom-limit">
+									{customSpreads}/3
+								</span>{" "}
+								of your daily drawings.
+								<br />
+								Want unlimited spreads?
+							</p>
+							<PlanButton />
+						</>
+					) : (
+						<div>
+							<span className="custom-limit">
+								{customSpreads}/3
+							</span>{" "}
+							drawings today <PlanButton />
+						</div>
+					)
+				) : (
+					<>
+						{longVersion && (
+							<p>You have unlimited readings! Draw away!</p>
+						)}
+						<button
+							onClick={() => {
+								writePlan({ userID, plan: "free" });
+								setPlan("free");
+							}}
+						>
+							Downgrade :(
+						</button>
+					</>
+				);
+			}
+
+			function EnterCards() {
+				const [enterSize, setEnterSize] = useState(
+					spreads["enter-cards"]?.length || 3
+				);
+
+				function EnterSelect({ defaultValue, childKeyBase }) {
+					return (
+						<div className="enter-select">
+							<CardImage cardName={defaultValue} />
+							<select
+								className="enter-card"
+								defaultValue={defaultValue || "PICK CARD"}
+							>
+								<option value="PICK CARD">PICK CARD</option>
+								{cards
+									.map((card) => card.name)
+									.sort(cardSorter)
+									.map((cardName) => (
+										<option
+											key={`${childKeyBase}-${cardName}`}
+											value={cardName}
+										>
+											{cardName}
+										</option>
+									))}
+							</select>
+						</div>
+					);
+				}
+
+				return (
+					<div id="enter-cards">
+						<h2 className="custom-header">
+							CARDS:{" "}
+							<select
+								defaultValue={enterSize}
+								onChange={(e) => setEnterSize(+e.target.value)}
+							>
+								{new Array(9).fill(null).map((_, i) => (
+									<option
+										key={`enter-cards-size-${i}`}
+										value={i + 2}
+									>
+										{i + 2}
+									</option>
+								))}
+							</select>
+						</h2>
+						<div id="enter-selects">
+							{new Array(enterSize).fill(null).map((n, i) => (
+								<EnterSelect
+									key={`enter-select-${i}`}
+									childKeyBase={`enter-select-${i}`}
+									defaultValue={spreads["enter-cards"][i]}
+								/>
+							))}
+						</div>
+						<br />
+						<div id="enter-cards-buttons">
+							<CustomSpreadOptions enterCards={true} />
+							<DrawingStatus longVersion={true} />
+						</div>
+						{!!spreads["enter-cards"].length ? (
+							<>
+								<hr />
+								<SpreadWords
+									{...{
+										cardNames: spreads["enter-cards"],
+										cardLinkHandler,
+										wordLinkHandler,
+									}}
+								/>
+							</>
+						) : (
+							<>
+								<br />
+								<br />
+							</>
+						)}
+					</div>
+				);
+			}
+
+			function SpreadSize({ phrases }) {
+				return (
+					<>
+						<div id="spread-size">
+							<h2 className="custom-header">Cards:</h2>
+							<select
+								id="select-size"
+								defaultValue={phrases ? phrases.length + 1 : 5}
+							>
+								{Array.apply(null, Array(9)).map((_, i) => (
+									<option
+										key={`size select ${i + 2}`}
+										value={i + 2}
+									>
+										{i + 2}
+									</option>
+								))}
+							</select>
+						</div>
+						<div>
+							<CustomSpreadOptions />
+						</div>
+					</>
+				);
+			}
+
+			return view === "daily-spread" || customSpreadView === "random" ? (
+				<Spread
+					{...{
+						view,
+						spreads,
+						SpreadSize,
+						userID,
+						dailyStats,
+						cardLinkHandler,
+						wordLinkHandler,
+						DrawingStatus,
+					}}
+				/>
+			) : (
+				<EnterCards />
 			);
 		}
 
@@ -259,20 +477,7 @@ function App() {
 						{...{ lookupWord, cardLinkHandler, wordLinkHandler }}
 					/>
 				) : (
-					<Spread
-						{...{
-							view,
-							spreads,
-							SpreadSize,
-							userID,
-							dailyStats,
-							cardLinkHandler,
-							wordLinkHandler,
-							customSpreads,
-							plan,
-							setPlan,
-						}}
-					/>
+					<ShowSpread />
 				)}
 			</>
 		);

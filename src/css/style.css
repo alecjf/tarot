@@ -87,6 +87,7 @@ body #root .App .common-words,
 body #root .App .custom-header,
 body #root .App #daily-stats-subheader,
 body #root .App #empty-custom,
+body #root .App #enter-cards,
 body #root .App #journal,
 body #root .App #phrases #lines #header,
 body #root .App #sign-in-screen,
@@ -123,16 +124,33 @@ body #root .App .dim {
   font-weight: normal !important;
 }
 
-body #root .App #empty-custom {
-  padding: 10px 10px 30px;
+body #root .App #empty-custom,
+body #root .App #enter-cards {
   text-align: center;
 }
 
-body #root .App #empty-custom hr {
+body #root .App #empty-custom#empty-custom,
+body #root .App #enter-cards#empty-custom {
+  padding: 10px 10px 30px;
+}
+
+body #root .App #empty-custom#enter-cards,
+body #root .App #enter-cards#enter-cards {
+  padding-top: 10px;
+}
+
+body #root .App #empty-custom hr,
+body #root .App #enter-cards hr {
   margin: 30px auto;
 }
 
+body #root .App #empty-custom #spread-size,
+body #root .App #enter-cards #spread-size {
+  margin-bottom: 22px;
+}
+
 body #root .App #empty-custom button,
+body #root .App #enter-cards-buttons button,
 body #root .App .flip-button,
 body #root .App #phrases #lines #header button,
 body #root .App .remove-line-button,
@@ -144,6 +162,7 @@ body #root .App #spread-size button {
 }
 
 body #root .App #empty-custom button:hover,
+body #root .App #enter-cards-buttons button:hover,
 body #root .App .flip-button:hover,
 body #root .App #phrases #lines #header button:hover,
 body #root .App .remove-line-button:hover,
@@ -153,6 +172,7 @@ body #root .App #spread-size button:hover {
 }
 
 body #root .App #empty-custom button,
+body #root .App #enter-cards-buttons button,
 body #root .App .flip-button,
 body #root .App #navigation button,
 body #root .App #phrases #lines #header button,
@@ -169,6 +189,8 @@ body #root .App #spread-size button {
 }
 
 body #root .App #empty-custom button.active, body #root .App #empty-custom button:hover,
+body #root .App #enter-cards-buttons button.active,
+body #root .App #enter-cards-buttons button:hover,
 body #root .App .flip-button.active,
 body #root .App .flip-button:hover,
 body #root .App #navigation button.active,

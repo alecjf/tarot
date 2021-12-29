@@ -82,5 +82,10 @@ const reverseWords = (words) =>
 
 const flipUpright = (cardName) => cardName.replace(" reversed", "");
 
+const reverseCard = (cardName) =>
+	cardName.includes(" reversed")
+		? flipUpright(cardName)
+		: cardName + " reversed";
+
 export default opposites;
-export { reverseWord, reverseWords, flipUpright };
+export { flipUpright, reverseCard, reverseWord, reverseWords };

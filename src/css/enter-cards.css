@@ -1,0 +1,29 @@
+#enter-cards #enter-selects {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 10px;
+}
+
+#enter-cards #enter-selects .enter-select {
+  max-width: 180px;
+}
+
+#enter-cards #enter-selects .enter-select img {
+  height: auto;
+  width: 100%;
+}
+
+#enter-cards #enter-selects .enter-select select {
+  width: 100%;
+  font-size: 0.85rem;
+}
+/*# sourceMappingURL=enter-cards.css.map */

@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import cards from "../scripts/data/cards";
-import { flipUpright } from "../scripts/data/opposites";
+import { reverseCard } from "../scripts/data/opposites";
 import { randomItem } from "../scripts/misc";
 import { cardSorter } from "../scripts/spread-data";
 import CardButtons from "./ButtonCards";
@@ -8,11 +8,7 @@ import CardImage from "./CardImage";
 import SpreadWords from "./SpreadWords";
 
 function LookupCard({ lookupCard, cardLinkHandler, wordLinkHandler }) {
-	const card = cards.find((card) => card.name === lookupCard),
-		reverseCard = (cardName) =>
-			cardName.includes(" reversed")
-				? flipUpright(cardName)
-				: cardName + " reversed";
+	const card = cards.find((card) => card.name === lookupCard);
 
 	function AllCardsSelect() {
 		return (

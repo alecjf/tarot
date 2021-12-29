@@ -11,7 +11,6 @@ import {
 	suitWords,
 } from "../../scripts/spread-data";
 import DailyStats from "./DailyStats";
-import { writePlan } from "../../scripts/cloud";
 import SpreadWords from "../SpreadWords";
 
 function Spread({
@@ -22,9 +21,7 @@ function Spread({
 	dailyStats,
 	cardLinkHandler,
 	wordLinkHandler,
-	customSpreads,
-	plan,
-	setPlan,
+	DrawingStatus,
 }) {
 	const cardNamesFromPhrases = (phrases) => [
 		...new Set(phrases.map((p) => p.cards).flat()),
@@ -74,57 +71,6 @@ function Spread({
 				<Counts entries={suitEntries} />
 				<CommonWords commonWords={suitWords} entries={suitEntries} />
 			</div>
-		);
-	}
-
-	function DrawingStatus({ longVersion }) {
-		const PlanButton = () => (
-			<button
-				onClick={() => {
-					writePlan({ userID, plan: "paid" });
-					setPlan("paid");
-				}}
-			>
-				Upgrade
-			</button>
-		);
-
-		return plan === "free" ? (
-			<>
-				{longVersion ? (
-					<>
-						<p>
-							You have used{" "}
-							<span className="custom-limit">
-								{customSpreads}/3
-							</span>{" "}
-							of your daily drawings.
-							<br />
-							Want unlimited spreads?
-						</p>
-					</>
-				) : (
-					<div>
-						<span className="custom-limit">{customSpreads}/3</span>{" "}
-						drawings today
-					</div>
-				)}
-				<PlanButton />
-			</>
-		) : longVersion ? (
-			<>
-				<p>You have unlimited readings! Draw away!</p>
-				<button
-					onClick={() => {
-						writePlan({ userID, plan: "free" });
-						setPlan("free");
-					}}
-				>
-					Downgrade :(
-				</button>
-			</>
-		) : (
-			<></>
 		);
 	}
 

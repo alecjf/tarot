@@ -10,7 +10,7 @@ import {
 
 const auth = getAuth(app);
 
-const DEV_MODE = false;
+const DEV_MODE = true;
 
 function addUser(email, password) {
 	createUserWithEmailAndPassword(auth, email, password)
