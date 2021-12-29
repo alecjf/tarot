@@ -348,7 +348,9 @@ function App() {
 				function EnterSelect({ defaultValue, childKeyBase }) {
 					return (
 						<div className="enter-select">
-							<CardImage cardName={defaultValue} />
+							<CardImage
+								{...{ cardName: defaultValue, cardLinkHandler }}
+							/>
 							<select
 								className="enter-card"
 								defaultValue={defaultValue || "PICK CARD"}
