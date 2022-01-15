@@ -60,6 +60,12 @@ function App() {
 			setView("lookup-word");
 		};
 
+	console.log(
+		cards
+			.map((card) => card.name)
+			.filter((card) => !card.includes(" reversed"))
+	);
+
 	useEffect(() => {
 		window.scrollTo(0, 0);
 		document.getElementsByTagName("select")[0]?.focus();

@@ -1,5 +1,6 @@
 @import url(c:\Users\ferna\Desktop\Fern Haus Tarot\fern-haus-tarot\src\css\colors.css);
-#paths-window .path:hover {
+#paths-window .path:hover,
+#paths-window .sefira:hover {
   background-color: white !important;
   opacity: 1 !important;
   cursor: pointer;
@@ -45,6 +46,7 @@
   background-color: var(--header-footer-text-color);
   border: 2px solid black;
   border-radius: 100%;
+  color: black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

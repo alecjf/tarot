@@ -1,126 +1,32 @@
 import { pathColors, resetAllColors } from "../../scripts/trees/spread-paths";
+import sefInfo, { pathTranslateFormat } from "../../scripts/trees/sefs";
 
 function PathsSummary({ allData }) {
-	const sefs = [
-		"Kether",
-		"Chokmah",
-		"Binah",
-		"Chesed",
-		"Geburah",
-		"Tiphareth",
-		"Netzach",
-		"Hod",
-		"Yesod",
-		"Malkuth",
-	];
-
-	const sefInfo = {
-		Kether: [
-			"Crown",
-			"Sphere of Creative Urge",
-			"nothingness, supreme godhead, the creator",
-			"Saturn",
-		],
-		Chokmah: [
-			"Wisdom",
-			"Sphere of Force",
-			"yang, active, positive, god, benevolent, beginning, point",
-			"Kings: Elders, fire, Atziluth (creative urge)",
-		],
-		Binah: [
-			"Understanding",
-			"Sphere of Conceptual Form",
-			"yin, passive, negative, goddess, discerning, womb",
-			"Queens: Adults, water, Briah (concept)",
-		],
-		Chesed: [
-			"Mercy",
-			"Sphere of Expansion",
-			"peace, forgiveness, cohesion, grace",
-			"right arm, white, Moon",
-		],
-		Geburah: [
-			"Strength",
-			"Sphere of Restriction",
-			"struggle, judgment, punishment, retribution, rigor",
-			"left arm, red",
-		],
-		Tiphareth: [
-			"Beauty",
-			"Sphere of Illumination",
-			"harmony, awakening, compassion",
-			"green, Venus",
-			"Princes: Young adults, air, Yetzirah (formation)",
-		],
-		Netzach: [
-			"Victory",
-			"Sphere of Creativity",
-			"passion, emotion, instinct, prophecy",
-			"right leg, Mars",
-		],
-		Hod: [
-			"Splendor",
-			"Sphere of Logic",
-			"reason, intellect, learning, prophecy",
-			"left leg, Sun",
-		],
-		Yesod: [
-			"Foundation",
-			"Sphere of Potential",
-			"spiritual connection, divine transmission, covenant",
-			"phallus, Mercury",
-		],
-		Malkuth: [
-			"Kingdom",
-			"Sphere of Manifestation",
-			"physical world, health & wealth, basic consciousness, communion of Israel",
-			"Jupiter",
-			"Princesses: Children, earth, Assiah (presence)",
-		],
-	};
-
-	const pathTranslate = (path) => {
-		const s = path.split("-").map((num) => sefs[num - 1]),
-			relateSefs = (s, reverse) =>
-				(reverse ? s.reverse() : s)
-					.map((sef) => sefInfo[sef][0])
-					.join(" of ");
-		return (
-			<>
-				{"from " + s.join(" to ")}
-				<br />
-				{relateSefs(s, false)}
-				<br />
-				{relateSefs(s, true)}
-			</>
-		);
-	};
-
 	const scrollToPaths = () =>
 		document
 			.getElementById("paths-window")
 			.scrollTo(0, document.getElementById("trees-wrapper").offsetTop);
 
 	function interactHandler(e) {
-		const treesMap = allData[e.currentTarget.id].trees,
+		const trees = allData[e.currentTarget.id].trees,
 			{ highlightColor } = pathColors("path");
 		resetAllColors();
 		e.currentTarget.style.backgroundColor = highlightColor;
-		[...treesMap.keys()].forEach((tree) =>
+		Object.keys(trees).forEach((tree) =>
 			[
 				...document
 					.getElementById("paths-window")
 					.getElementsByClassName(tree),
 			].forEach((treeElem) =>
-				[
-					...treeElem.getElementsByClassName(treesMap.get(tree)),
-				].forEach(
+				[...treeElem.getElementsByClassName(trees[tree])].forEach(
 					(elem) => (elem.style.backgroundColor = highlightColor)
 				)
 			)
 		);
 		scrollToPaths();
 	}
+
+	console.log(allData);
 
 	function sefInfoHandler(e) {
 		const { highlightColor } = pathColors("sefira"),
@@ -149,8 +55,8 @@ function PathsSummary({ allData }) {
 							return (
 								bVal.cards.length - aVal.cards.length ||
 								+aFrom - +bFrom ||
-								+aTo - +bTo ||
-								aVal.cards[0][0].localeCompare(bVal.cards[0][0])
+								+aTo - +bTo
+								// || aVal.cards[0][0].localeCompare(bVal.cards[0][0])
 							);
 						})
 						.map(([k, v]) => (
@@ -161,15 +67,15 @@ function PathsSummary({ allData }) {
 								onClick={(e) => interactHandler(e)}
 							>
 								<td>
-									{pathTranslate(k)}
+									{pathTranslateFormat(k)}
 									<ul>
-										{[...v.trees.entries()].map(
-											([tree, path]) => (
+										{Object.keys(allData[k].trees).map(
+											(tree) => (
 												<li
-													key={`tree-list-item-${k}-${tree}-${path}`}
-													className={tree}
+													key={`tree-list-item-${k}-${tree}-${allData[k][tree]}`}
 												>
-													{tree}: {path}
+													{tree}:{" "}
+													{allData[k].trees[tree]}
 												</li>
 											)
 										)}

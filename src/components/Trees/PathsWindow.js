@@ -7,6 +7,7 @@ import spreadPaths, {
 } from "../../scripts/trees/spread-paths";
 import PathsSummary from "./PathsSummary";
 import Trees from "./Trees";
+import { pathTranslate } from "../../scripts/trees/sefs";
 
 function PathsWindow({ cardNames, ClosePathsWindowButton }) {
 	const [pathsSummary, setPathsSummary] = useState(undefined);
@@ -35,17 +36,15 @@ function PathsWindow({ cardNames, ClosePathsWindowButton }) {
 			const { highlightColor } = pathColors(cn),
 				name = elem.className.split(" ").pop(),
 				row = document.getElementById(name);
-			if (row) {
-				row.style.backgroundColor = highlightColor;
-				[
-					...document
-						.getElementById("paths-window")
-						.getElementsByClassName(name),
-				].forEach((el) => (el.style.backgroundColor = highlightColor));
-				scrollToSummary(row);
-			} else {
-				alert(name);
-			}
+			row
+				? (row.style.backgroundColor = highlightColor)
+				: alert("NOT DRAWN: " + pathTranslate(name).join("; "));
+			[
+				...document
+					.getElementById("paths-window")
+					.getElementsByClassName(name),
+			].forEach((el) => (el.style.backgroundColor = highlightColor));
+			scrollToSummary(row);
 		}
 
 		const pathHandler = (path) => handlerHelper("path", path),
