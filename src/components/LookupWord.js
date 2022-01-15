@@ -1,8 +1,8 @@
+import { useMemo } from "react";
 import { allWords } from "../scripts/data/cards";
 import { getAdjs, nounify } from "../scripts/misc";
 import SpreadWords from "./SpreadWords";
 import ButtonWords from "./ButtonWords";
-import { useMemo } from "react";
 
 function LookupWord({ lookupWord, cardLinkHandler, wordLinkHandler }) {
 	const nouns = nounify(lookupWord).sort(),
@@ -27,7 +27,7 @@ function LookupWord({ lookupWord, cardLinkHandler, wordLinkHandler }) {
 				))}
 			</select>
 		),
-		[]
+		[lookupWord, wordLinkHandler]
 	);
 
 	return (

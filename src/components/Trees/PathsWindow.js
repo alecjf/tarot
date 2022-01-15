@@ -30,41 +30,34 @@ function PathsWindow({ cardNames, ClosePathsWindowButton }) {
 			elem.scrollIntoView();
 		}
 
-		function pathHandler(path) {
+		function handlerHelper(cn, elem) {
 			resetAllColors();
-			const p = path.className.split(" ").pop(),
-				row = document.getElementById(p);
+			const { highlightColor } = pathColors(cn),
+				name = elem.className.split(" ").pop(),
+				row = document.getElementById(name);
 			if (row) {
-				row.style.backgroundColor =
-					pathColors("interact").highlightColor;
-				[...document.getElementsByClassName(p)].forEach(
-					(pt) =>
-						(pt.style.backgroundColor =
-							pathColors("path").highlightColor)
-				);
+				row.style.backgroundColor = highlightColor;
+				[
+					...document
+						.getElementById("paths-window")
+						.getElementsByClassName(name),
+				].forEach((el) => (el.style.backgroundColor = highlightColor));
 				scrollToSummary(row);
 			} else {
-				alert(p);
+				alert(name);
 			}
 		}
 
-		function sefHandler(sef) {
-			resetAllColors();
-			const { highlightColor } = pathColors("sefira"),
-				row = document.getElementById(sef.className.split(" ").pop());
-			sef.style.backgroundColor = highlightColor;
-			row.style.backgroundColor = highlightColor;
-			scrollToSummary(row);
-		}
-
-		const setOnClick = (cn, handler) =>
-			[
-				...document
-					.getElementById("paths-window")
-					.getElementsByClassName(cn),
-			].forEach((elem) => {
-				elem.onclick = () => handler(elem);
-			});
+		const pathHandler = (path) => handlerHelper("path", path),
+			sefHandler = (sef) => handlerHelper("sefira", sef),
+			setOnClick = (cn, handler) =>
+				[
+					...document
+						.getElementById("paths-window")
+						.getElementsByClassName(cn),
+				].forEach((elem) => {
+					elem.onclick = () => handler(elem);
+				});
 
 		setOnClick("path", pathHandler);
 		setOnClick("sefira", sefHandler);
