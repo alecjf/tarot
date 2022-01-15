@@ -17,21 +17,23 @@ import firestore, {
 } from "../scripts/cloud";
 import auth, { signOutUser } from "../scripts/auth";
 import { writeCustomSpreads } from "../scripts/cloud";
-import phrasesData from "../scripts/phrases-data";
-import processDailyReadings from "../scripts/daily-stats";
 import cards, { allWords } from "../scripts/data/cards";
 import { flipUpright } from "../scripts/data/opposites";
 import { randomItem } from "../scripts/misc";
+import { cardSorter } from "../scripts/spread-data";
+import phrasesData from "../scripts/phrases-data";
+import processDailyReadings from "../scripts/daily-stats";
 import Header from "./Header";
 import SignIn from "./SignIn/SignIn";
 import Register from "./SignIn/Register";
 import Spread from "./Spread/Spread";
 import LookupCard from "./LookupCard";
-import Journal from "./Journal";
 import LookupWord from "./LookupWord";
-import SpreadWords from "./SpreadWords";
+import Journal from "./Journal";
 import CardImage from "./CardImage";
-import { cardSorter } from "../scripts/spread-data";
+import SpreadWords from "./SpreadWords";
+import PathsWindow from "./Trees/PathsWindow";
+import Trees from "./Trees/Trees";
 
 function App() {
 	const [loaded, setLoaded] = useState(false),
@@ -47,23 +49,21 @@ function App() {
 		[customSpreads, setShowSpreads] = useState(undefined),
 		[customSpreadView, setShowSpreadView] = useState("random"),
 		[lookupCard, setLookupCard] = useState(randomItem(cards).name),
+		[lookupWord, setLookupWord] = useState(allWords[0]),
+		[pathsWindowCardNames, setPathsWindowCardNames] = useState(undefined),
 		cardLinkHandler = (cardName) => {
 			setLookupCard(cardName);
 			setView("lookup-card");
 		},
-		[lookupWord, setLookupWord] = useState(allWords[0]),
 		wordLinkHandler = (word) => {
 			setLookupWord(word);
 			setView("lookup-word");
-		},
-		SignOutButton = () => (
-			<button onClick={() => signOutUser()}>Sign Out</button>
-		);
+		};
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
 		document.getElementsByTagName("select")[0]?.focus();
-	});
+	}, [view, lookupCard, lookupWord]);
 
 	useEffect(() => {
 		onAuthStateChanged(auth, (user) => {
@@ -147,6 +147,54 @@ function App() {
 			}
 		});
 	}, []);
+
+	function pathsWindowToggler(isOpening) {
+		document.getElementById("paths-window").style.display = isOpening
+			? "flex"
+			: "none";
+		document.body.style.overflow = isOpening ? "hidden" : "auto";
+	}
+
+	// COMPONENTS:
+	function SignOutButton() {
+		return <button onClick={() => signOutUser()}>Sign Out</button>;
+	}
+
+	function ClosePathsWindowButton() {
+		return (
+			<button
+				style={{ position: "fixed", top: 0, left: 0 }}
+				onClick={() => pathsWindowToggler(false)}
+			>
+				CLOSE
+			</button>
+		);
+	}
+
+	function OpenPathsWindowButton({ cardNames }) {
+		return (
+			<button
+				onClick={() => {
+					setPathsWindowCardNames(cardNames);
+					pathsWindowToggler(true);
+				}}
+			>
+				MORE INFO
+			</button>
+		);
+	}
+
+	function TreesSummary({ cardNames }) {
+		return (
+			<div className="trees-summary">
+				<h3 id="paths-header" className="custom-header dark">
+					Tree of Life Paths
+				</h3>
+				<Trees {...{ cardNames }} />
+				<OpenPathsWindowButton {...{ cardNames }} />
+			</div>
+		);
+	}
 
 	function SignedIn() {
 		function Navigation() {
@@ -462,6 +510,7 @@ function App() {
 						cardLinkHandler,
 						wordLinkHandler,
 						DrawingStatus,
+						TreesSummary,
 					}}
 				/>
 			) : (
@@ -480,6 +529,7 @@ function App() {
 							lookupCard,
 							cardLinkHandler,
 							wordLinkHandler,
+							TreesSummary,
 						}}
 					/>
 				) : view === "lookup-word" ? (
@@ -518,19 +568,27 @@ function App() {
 	}
 
 	return (
-		<div className="App">
-			<Header />
-			{loaded &&
-				(auth.currentUser ? (
-					auth.currentUser.emailVerified ? (
-						<SignedIn />
+		<>
+			<PathsWindow
+				{...{
+					cardNames: pathsWindowCardNames,
+					ClosePathsWindowButton,
+				}}
+			/>
+			<div className="App">
+				<Header />
+				{loaded &&
+					(auth.currentUser ? (
+						auth.currentUser.emailVerified ? (
+							<SignedIn />
+						) : (
+							<SignInScreen pendingVerify={true} />
+						)
 					) : (
-						<SignInScreen pendingVerify={true} />
-					)
-				) : (
-					<SignInScreen pendingVerify={false} />
-				))}
-		</div>
+						<SignInScreen pendingVerify={false} />
+					))}
+			</div>
+		</>
 	);
 }
 

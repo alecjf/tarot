@@ -1,0 +1,103 @@
+.luria {
+    .top-hex {
+        .vav {
+            left: 0;
+            transform: rotate(-30deg);
+            transform-origin: left;
+        }
+
+        .heh {
+            right: 0;
+            transform: rotate(30deg);
+            transform-origin: right;
+        }
+
+        .gimmel {
+            left: 0;
+            transform: rotate(90deg);
+            transform-origin: left;
+        }
+
+        .beth {
+            right: 0;
+            transform: rotate(-90deg);
+            transform-origin: right;
+        }
+
+        .qof {
+            left: 0;
+            transform: rotate(30deg);
+            transform-origin: left;
+        }
+
+        .zain {
+            right: 0;
+            transform: rotate(-30deg);
+            transform-origin: right;
+        }
+
+        .ayin {
+            left: 0;
+            transform: rotate(60deg);
+            transform-origin: left;
+        }
+
+        .teth {
+            right: 0;
+            transform: rotate(-60deg);
+            transform-origin: right;
+        }
+    }
+
+    .triangle {
+        .tzaddi {
+            left: 0;
+            transform: rotate(30deg);
+            transform-origin: left;
+        }
+
+        .chet {
+            right: 0;
+            transform: rotate(-30deg);
+            transform-origin: right;
+        }
+    }
+
+    .base {
+        .peh {
+            left: 0;
+            transform: rotate(-90deg);
+            transform-origin: left;
+        }
+
+        .kaph {
+            right: 0;
+            transform: rotate(90deg);
+            transform-origin: right;
+        }
+
+        .samekh {
+            left: 0;
+            transform: rotate(-30deg);
+            transform-origin: left;
+        }
+
+        .yod {
+            right: 0;
+            transform: rotate(30deg);
+            transform-origin: right;
+        }
+
+        .lamed {
+            left: 0;
+            transform: rotate(30deg);
+            transform-origin: left;
+        }
+
+        .nun {
+            right: 0;
+            transform: rotate(-30deg);
+            transform-origin: right;
+        }
+    }
+}

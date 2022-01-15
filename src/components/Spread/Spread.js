@@ -1,17 +1,21 @@
 import "../../css/spread.css";
-import Cards from "./Cards";
-import Lines from "./Lines";
-import Histogram from "./Histogram";
-import Counts from "./Counts";
-import CommonWords from "./CommonWords";
 import {
 	histogram,
 	sortCountedEntries,
 	rankWords,
 	suitWords,
 } from "../../scripts/spread-data";
+import Cards from "./Cards";
+import Lines from "./Lines";
+import Histogram from "./Histogram";
+import Counts from "./Counts";
+import CommonWords from "./CommonWords";
 import DailyStats from "./DailyStats";
 import SpreadWords from "../SpreadWords";
+
+function cardNamesFromPhrases(phrases) {
+	return [...new Set(phrases.map((p) => p.cards).flat())];
+}
 
 function Spread({
 	view,
@@ -22,11 +26,8 @@ function Spread({
 	cardLinkHandler,
 	wordLinkHandler,
 	DrawingStatus,
+	TreesSummary,
 }) {
-	const cardNamesFromPhrases = (phrases) => [
-		...new Set(phrases.map((p) => p.cards).flat()),
-	];
-
 	let phrases, cardNames, rankEntries, suitEntries;
 
 	if (spreads?.[view]) {
@@ -35,6 +36,8 @@ function Spread({
 		rankEntries = sortCountedEntries(cardNames, true);
 		suitEntries = sortCountedEntries(cardNames, false);
 	}
+
+	console.log(cardNames);
 
 	function Phrases() {
 		return (
@@ -60,12 +63,12 @@ function Spread({
 		return (
 			<div id="spread-data">
 				<Histogram data={histogram(cardNames)} />
-				<h3 id="ranks-header" className="custom-header">
+				<h3 id="ranks-header" className="custom-header dark">
 					Ranks
 				</h3>
 				<Counts entries={rankEntries} />
 				<CommonWords commonWords={rankWords} entries={rankEntries} />
-				<h3 id="suits-header" className="custom-header">
+				<h3 id="suits-header" className="custom-header dark">
 					Suits
 				</h3>
 				<Counts entries={suitEntries} />
@@ -80,7 +83,7 @@ function Spread({
 				<>
 					<Phrases />
 					<SpreadData />
-					<h3 id="card-words-header" className="custom-header">
+					<h3 id="card-words-header" className="custom-header dark">
 						Compare Card Words
 					</h3>
 					<SpreadWords
@@ -88,6 +91,11 @@ function Spread({
 							cardNames,
 							cardLinkHandler,
 							wordLinkHandler,
+						}}
+					/>
+					<TreesSummary
+						{...{
+							cardNames,
 						}}
 					/>
 					{dailyStats && view === "daily-spread" && (
@@ -100,19 +108,20 @@ function Spread({
 						/>
 					)}
 				</>
-			) : view === "custom-spread" ? (
-				<div id="empty-custom">
-					<h3>Choose a spread between 2 and 10 cards.</h3>
-					<hr />
-					<SpreadSize {...{ phrases }} />
-					<hr />
-					<DrawingStatus longVersion={true} />
-				</div>
 			) : (
-				<></>
+				view === "custom-spread" && (
+					<div id="empty-custom">
+						<h3>Choose a spread between 2 and 10 cards.</h3>
+						<hr />
+						<SpreadSize {...{ phrases }} />
+						<hr />
+						<DrawingStatus longVersion={true} />
+					</div>
+				)
 			)}
 		</div>
 	);
 }
 
 export default Spread;
+export { cardNamesFromPhrases };

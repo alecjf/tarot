@@ -17,13 +17,10 @@ body * {
           box-sizing: border-box;
 }
 
-body #root {
-  max-width: 600px;
-  margin: auto;
-}
-
 body #root .App {
+  max-width: 600px;
   background-color: transparent;
+  margin: auto;
 }
 
 body #root .App > * {
@@ -72,17 +69,7 @@ body #root .App div:not(#lookup-card) > img:hover {
   cursor: pointer;
 }
 
-body #root .App .card-name,
-body #root .App #card-words-header,
-body #root .App #daily-stats-header,
-body #root .App .histo-header,
-body #root .App #ranks-header,
-body #root .App .stat-column-header,
-body #root .App #suits-header {
-  background-color: var(--accent-2);
-}
-
-body #root .App #lookup-card,
+body #root .App #lookup-card > *:not(.trees-summary):not(select),
 body #root .App .common-words,
 body #root .App .custom-header,
 body #root .App #daily-stats-subheader,
@@ -111,7 +98,12 @@ body #root .App #daily-stats-subheader {
 body #root .App .custom-header {
   color: var(--header-footer-text-color);
   font-family: Oswald, sans-serif;
+  text-align: center;
   text-transform: uppercase;
+}
+
+body #root .App .custom-header.dark {
+  background-color: var(--accent-2);
 }
 
 body #root .App .custom-limit {
@@ -155,7 +147,8 @@ body #root .App .flip-button,
 body #root .App #phrases #lines #header button,
 body #root .App .remove-line-button,
 body #root .App #sign-in-screen button,
-body #root .App #spread-size button {
+body #root .App #spread-size button,
+body #root .App .trees-summary button {
   min-width: 100px;
   border: 2px solid white !important;
   border-radius: 3px;
@@ -167,7 +160,8 @@ body #root .App .flip-button:hover,
 body #root .App #phrases #lines #header button:hover,
 body #root .App .remove-line-button:hover,
 body #root .App #sign-in-screen button:hover,
-body #root .App #spread-size button:hover {
+body #root .App #spread-size button:hover,
+body #root .App .trees-summary button:hover {
   border-color: var(--accent-2) !important;
 }
 
@@ -178,7 +172,8 @@ body #root .App #navigation button,
 body #root .App #phrases #lines #header button,
 body #root .App .remove-line-button,
 body #root .App #sign-in-screen button,
-body #root .App #spread-size button {
+body #root .App #spread-size button,
+body #root .App .trees-summary button {
   background-color: var(--box-color-1);
   border: 0;
   text-shadow: 0.15em 0.1em 0.1em var(--header-footer-text-color);
@@ -202,7 +197,9 @@ body #root .App .remove-line-button:hover,
 body #root .App #sign-in-screen button.active,
 body #root .App #sign-in-screen button:hover,
 body #root .App #spread-size button.active,
-body #root .App #spread-size button:hover {
+body #root .App #spread-size button:hover,
+body #root .App .trees-summary button.active,
+body #root .App .trees-summary button:hover {
   background-color: var(--accent-1);
   color: var(--header-footer-text-color);
   cursor: pointer;
@@ -288,5 +285,13 @@ body #root .App #spread-size {
 body #root .App #spread-size > * {
   max-width: 100px;
   margin: 0 auto;
+}
+
+body #root .App #spread-container .tree-paths {
+  padding-bottom: 24px;
+}
+
+body #root .App .tree-paths {
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */

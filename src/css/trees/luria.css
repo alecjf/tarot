@@ -1,0 +1,128 @@
+.luria .top-hex .vav {
+  left: 0;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.luria .top-hex .heh {
+  right: 0;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.luria .top-hex .gimmel {
+  left: 0;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.luria .top-hex .beth {
+  right: 0;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.luria .top-hex .qof {
+  left: 0;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.luria .top-hex .zain {
+  right: 0;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.luria .top-hex .ayin {
+  left: 0;
+  -webkit-transform: rotate(60deg);
+          transform: rotate(60deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.luria .top-hex .teth {
+  right: 0;
+  -webkit-transform: rotate(-60deg);
+          transform: rotate(-60deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.luria .triangle .tzaddi {
+  left: 0;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.luria .triangle .chet {
+  right: 0;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.luria .base .peh {
+  left: 0;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.luria .base .kaph {
+  right: 0;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.luria .base .samekh {
+  left: 0;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.luria .base .yod {
+  right: 0;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.luria .base .lamed {
+  left: 0;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.luria .base .nun {
+  right: 0;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+/*# sourceMappingURL=luria.css.map */

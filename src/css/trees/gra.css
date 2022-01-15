@@ -1,0 +1,128 @@
+.gra .top-hex .vav {
+  left: 0;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.gra .top-hex .heh {
+  right: 0;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.gra .top-hex .daleth {
+  left: 0;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.gra .top-hex .gimmel {
+  right: 0;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.gra .top-hex .chet {
+  left: 0;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.gra .top-hex .zain {
+  right: 0;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.gra .diamond .yod {
+  left: 0;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.gra .diamond .teth {
+  right: 0;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.gra .diamond .nun {
+  left: 0;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.gra .diamond .lamed {
+  right: 0;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.gra .base .peh {
+  left: 0;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.gra .base .kaph {
+  right: 0;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.gra .base .ayin {
+  left: 0;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.gra .base .samekh {
+  right: 0;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.gra .base .qof {
+  left: 0;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.gra .base .tzaddi {
+  right: 0;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+/*# sourceMappingURL=gra.css.map */

@@ -17,11 +17,10 @@ body {
 	}
 
 	#root {
-		max-width: 600px;
-		margin: auto;
-
 		.App {
+			max-width: 600px;
 			background-color: transparent;
+			margin: auto;
 
 			& > * {
 				background-color: var(--accent-1);
@@ -67,17 +66,7 @@ body {
 				}
 			}
 
-			.card-name,
-			#card-words-header,
-			#daily-stats-header,
-			.histo-header,
-			#ranks-header,
-			.stat-column-header,
-			#suits-header {
-				background-color: var(--accent-2);
-			}
-
-			#lookup-card,
+			#lookup-card > *:not(.trees-summary):not(select),
 			.common-words,
 			.custom-header,
 			#daily-stats-subheader,
@@ -106,7 +95,12 @@ body {
 			.custom-header {
 				color: var(--header-footer-text-color);
 				font-family: Oswald, sans-serif;
+				text-align: center;
 				text-transform: uppercase;
+
+				&.dark {
+					background-color: var(--accent-2);
+				}
 			}
 
 			.custom-limit {
@@ -146,7 +140,8 @@ body {
 			#phrases #lines #header button,
 			.remove-line-button,
 			#sign-in-screen button,
-			#spread-size button {
+			#spread-size button,
+			.trees-summary button {
 				min-width: 100px;
 				border: 2px solid white !important;
 				border-radius: 3px;
@@ -163,7 +158,8 @@ body {
 			#phrases #lines #header button,
 			.remove-line-button,
 			#sign-in-screen button,
-			#spread-size button {
+			#spread-size button,
+			.trees-summary button {
 				background-color: var(--box-color-1);
 				border: 0;
 				text-shadow: 0.15em 0.1em 0.1em var(--header-footer-text-color);
@@ -251,6 +247,16 @@ body {
 					max-width: 100px;
 					margin: 0 auto;
 				}
+			}
+
+			#spread-container {
+				.tree-paths {
+					padding-bottom: 24px;
+				}
+			}
+
+			.tree-paths {
+				text-align: center;
 			}
 		}
 	}

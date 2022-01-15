@@ -2,12 +2,18 @@ import React, { useMemo } from "react";
 import cards from "../scripts/data/cards";
 import { reverseCard } from "../scripts/data/opposites";
 import { randomItem } from "../scripts/misc";
-import { cardSorter } from "../scripts/spread-data";
+import { cardSorter, majors } from "../scripts/spread-data";
+import { flipUpright } from "../scripts/data/opposites";
 import CardButtons from "./ButtonCards";
 import CardImage from "./CardImage";
 import SpreadWords from "./SpreadWords";
 
-function LookupCard({ lookupCard, cardLinkHandler, wordLinkHandler }) {
+function LookupCard({
+	lookupCard,
+	cardLinkHandler,
+	wordLinkHandler,
+	TreesSummary,
+}) {
 	const card = cards.find((card) => card.name === lookupCard);
 
 	function AllCardsSelect() {
@@ -62,6 +68,17 @@ function LookupCard({ lookupCard, cardLinkHandler, wordLinkHandler }) {
 			<br />
 			<br />
 			<FlipCardButton /> <RandomCardButton />
+			{majors.includes(flipUpright(lookupCard)) && (
+				<>
+					<br />
+					<br />
+					<TreesSummary
+						{...{
+							cardNames: [lookupCard],
+						}}
+					/>
+				</>
+			)}
 			<hr />
 			{card.words.length ? (
 				<SpreadWords

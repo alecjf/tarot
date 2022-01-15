@@ -1,0 +1,70 @@
+@import "../colors.css";
+
+// hoverable
+#paths-window {
+	.path {
+		&:hover {
+			background-color: white !important;
+			opacity: 1 !important;
+			cursor: pointer;
+		}
+	}
+}
+
+.trees-summary {
+	margin-bottom: 24px;
+	text-align: center;
+}
+
+.trees {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+
+	.tree-container {
+		background-color: var(--accent-2);
+
+		.tree {
+			box-sizing: border-box;
+			margin: auto;
+			position: relative;
+
+			.sefira,
+			.tree {
+				box-sizing: border-box;
+			}
+
+			.sefira {
+				background-color: var(--header-footer-text-color);
+				border: 2px solid black;
+				border-radius: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-family: Oswald, sans-serif;
+				font-size: 0.55em;
+				overflow: hidden;
+				position: absolute;
+				z-index: 2;
+			}
+
+			.path {
+				background-color: #bbb;
+				opacity: 0.1;
+				position: absolute;
+				z-index: 1;
+
+				&.center {
+					left: 0;
+					transform: rotate(90deg);
+					transform-origin: left;
+
+					&.center-1 {
+						top: 0;
+					}
+				}
+			}
+		}
+	}
+}

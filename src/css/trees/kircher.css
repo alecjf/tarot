@@ -1,0 +1,128 @@
+.kircher .top-hex .beth {
+  left: 0;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.kircher .top-hex .aleph {
+  right: 0;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.kircher .top-hex .chet {
+  left: 0;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.kircher .top-hex .vav {
+  right: 0;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.kircher .top-hex .zain {
+  left: 0;
+  -webkit-transform: rotate(60deg);
+          transform: rotate(60deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.kircher .top-hex .heh {
+  right: 0;
+  -webkit-transform: rotate(-60deg);
+          transform: rotate(-60deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.kircher .triangle .lamed {
+  left: 0;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.kircher .triangle .yod {
+  right: 0;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.kircher .base .shin {
+  left: 0;
+  -webkit-transform: rotate(60deg);
+          transform: rotate(60deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.kircher .base .qof {
+  right: 0;
+  -webkit-transform: rotate(-60deg);
+          transform: rotate(-60deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.kircher .base .mem {
+  left: 0;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.kircher .base .kaph {
+  right: 0;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.kircher .base .ayin {
+  left: 0;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.kircher .base .nun {
+  right: 0;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.kircher .base .resh {
+  left: 0;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.kircher .base .tzaddi {
+  right: 0;
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+/*# sourceMappingURL=kircher.css.map */

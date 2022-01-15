@@ -88,7 +88,7 @@ function Lines({
 						{cardPair.cards.map((card) => (
 							<div
 								key={`${key} ${card} header`}
-								className="card-name custom-header"
+								className="card-name custom-header dark"
 								onClick={() => cardLinkHandler(card)}
 							>
 								{card}

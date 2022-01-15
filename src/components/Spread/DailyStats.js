@@ -18,7 +18,7 @@ function DailyStats({ dailyStats, cardLinkHandler, wordLinkHandler }) {
 
 		return (
 			<div>
-				<div className="stat-column-header custom-header">
+				<div className="stat-column-header custom-header dark">
 					{total} {header} Drawn
 				</div>
 				{processed.map(([item, freq]) => (
@@ -42,7 +42,7 @@ function DailyStats({ dailyStats, cardLinkHandler, wordLinkHandler }) {
 
 	return (
 		<div id="daily-stats-container">
-			<h3 id="daily-stats-header" className="custom-header">
+			<h3 id="daily-stats-header" className="custom-header dark">
 				Daily Spread History
 			</h3>
 			<div id="daily-stats-subheader">
