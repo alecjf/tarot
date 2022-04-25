@@ -1,6 +1,6 @@
 {
 	"name": "fern-haus-tarot",
-	"homepage": "https://fern.haus/tarot",
+	"homepage": "https://fern.haus/projects/tarot",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {

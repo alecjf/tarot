@@ -10,7 +10,7 @@ import {
 
 const auth = getAuth(app);
 
-const DEV_MODE = false;
+const DEV_MODE = true;
 
 function addUser(email, password) {
 	createUserWithEmailAndPassword(auth, email, password)
@@ -18,7 +18,7 @@ function addUser(email, password) {
 			sendEmailVerification(auth.currentUser, {
 				url: DEV_MODE
 					? "http://localhost:3000"
-					: "https://fern.haus/tarot",
+					: "https://fern.haus/projects/tarot",
 			})
 		)
 		.catch((error) => {
