@@ -1,138 +1,158 @@
 #spread-container {
-	#phrases {
-		display: flex;
-		align-items: center;
-		justify-content: center;
+    #phrases {
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-		& > * > div {
-			display: flex;
-			align-items: center;
-		}
+        & > * > div {
+            display: flex;
+            align-items: center;
+        }
 
-		#cards {
-			background-color: var(--header-footer-color);
-			color: var(--header-footer-text-color);
+        #cards {
+            background-color: var(--header-footer-color);
+            color: var(--header-footer-text-color);
 
-			.card-image-container {
-				height: var(--card-height);
-				width: var(--card-width);
-				justify-content: center;
-			}
-		}
+            .card-image-container {
+                height: var(--card-height);
+                width: var(--card-width);
+                justify-content: center;
+            }
+        }
 
-		#lines {
-			flex: 1;
+        #lines {
+            flex: 1;
 
-			& > div {
-				background-color: var(--box-color-1);
-				border: 1px solid var(--accent-1);
-			}
+            & > div {
+                background-color: var(--box-color-1);
+                border: 1px solid var(--accent-1);
+            }
 
-			.lines-item {
-				height: var(--card-height);
-				display: flex;
+            .lines-item {
+                height: var(--card-height);
+                display: flex;
 
-				.card-name {
-					height: 100%;
-					border-left: 2px solid var(--accent-1);
-					color: var(--header-footer-text-color);
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					transform: rotate(180deg);
-					text-orientation: mixed;
-					writing-mode: vertical-rl;
-					white-space: nowrap;
-				}
+                .card-name {
+                    height: 100%;
+                    border-left: 2px solid var(--accent-1);
+                    color: var(--header-footer-text-color);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transform: rotate(180deg);
+                    text-orientation: mixed;
+                    writing-mode: vertical-rl;
+                    white-space: nowrap;
+                }
 
-				.phrases {
-					height: 100%;
-					width: 100%;
-					line-height: 1.5em;
-					overflow: auto;
-					padding: 0 15px;
-				}
-			}
+                .phrases {
+                    height: 100%;
+                    width: 100%;
+                    color: var(--accent-2);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    font-weight: bold;
+                    line-height: 1.5em;
+                    overflow: auto;
+                    padding: 0 15px;
 
-			#footer,
-			#header {
-				height: calc(var(--card-height) / 2);
-				background-color: var(--header-footer-color);
-				border: none;
-				justify-content: center;
-				text-align: center;
-			}
+                    // add to journal button
+                    button {
+                        background-color: #fff;
+                        border: 0;
+                        color: var(--header-footer-color);
+                        font-size: 1.1rem;
+                        font-weight: bold;
 
-			#header {
-				flex-direction: column;
-				gap: 5px;
+                        &:hover {
+                            background-color: var(--header-footer-color);
+                            color: #fff;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
 
-				#spread-size {
-					flex-direction: row;
-					gap: 10px;
-				}
-			}
-		}
-	}
+            #footer,
+            #header {
+                height: calc(var(--card-height) / 2);
+                background-color: var(--header-footer-color);
+                border: none;
+                justify-content: center;
+                text-align: center;
+            }
 
-	#spread-data {
-		text-align: center;
+            #header {
+                flex-direction: column;
+                gap: 5px;
 
-		#histogram {
-			width: 100%;
-			display: flex;
+                #spread-size {
+                    flex-direction: row;
+                    gap: 10px;
+                }
+            }
+        }
+    }
 
-			.histo-column {
-				border: 1px solid var(--accent-2);
-				flex: 1;
+    #spread-data {
+        text-align: center;
 
-				.histo-subheader {
-					background-color: var(--header-footer-color);
-				}
+        #histogram {
+            width: 100%;
+            display: flex;
 
-				.histo-value {
-					background-color: var(--box-color-1);
-					color: var(--accent-2);
-					font-weight: bold;
-				}
-			}
-		}
+            .histo-column {
+                border: 1px solid var(--accent-2);
+                flex: 1;
 
-		.counts {
-			.counts-row {
-				display: flex;
+                .histo-subheader {
+                    background-color: var(--header-footer-color);
+                }
 
-				.count-col {
-					border: 1px solid var(--accent-2);
-					flex: 1;
-					text-align: center;
+                .histo-value {
+                    background-color: var(--box-color-1);
+                    color: var(--accent-2);
+                    font-weight: bold;
+                }
+            }
+        }
 
-					.count-header {
-						background-color: var(--header-footer-color);
-						color: var(--header-footer-text-color);
-					}
+        .counts {
+            .counts-row {
+                display: flex;
 
-					.count-value {
-						background-color: var(--box-color-1);
-						color: var(--accent-2);
-						font-weight: bold;
-					}
-				}
-			}
-		}
+                .count-col {
+                    border: 1px solid var(--accent-2);
+                    flex: 1;
+                    text-align: center;
 
-		.common-words {
-			text-align: left;
+                    .count-header {
+                        background-color: var(--header-footer-color);
+                        color: var(--header-footer-text-color);
+                    }
 
-			ul {
-				margin: 0;
+                    .count-value {
+                        background-color: var(--box-color-1);
+                        color: var(--accent-2);
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
 
-				li {
-					span {
-						text-decoration: underline;
-					}
-				}
-			}
-		}
-	}
+        .common-words {
+            text-align: left;
+
+            ul {
+                margin: 0;
+
+                li {
+                    span {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
 }

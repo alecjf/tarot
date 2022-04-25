@@ -3,261 +3,257 @@
 @import url("colors.css");
 
 body {
-	--card-height: 200px;
-	--card-width: calc(var(--card-height) * 0.58333);
-	background-color: var(--accent-2);
-	font-family: Oxygen, sans-serif;
-	font-size: 0.85em;
-	line-height: 1.8em;
-	margin: 0 0 50px;
+    --card-height: 200px;
+    --card-width: calc(var(--card-height) * 0.58333);
+    background-color: var(--accent-2);
+    font-family: Oxygen, sans-serif;
+    font-size: 0.85em;
+    line-height: 1.8em;
+    margin: 0 0 50px;
 
-	&,
-	* {
-		box-sizing: border-box;
-	}
+    &,
+    * {
+        box-sizing: border-box;
+    }
 
-	#root {
-		.App {
-			max-width: 600px;
-			background-color: transparent;
-			margin: auto;
+    #root {
+        .App {
+            max-width: 600px;
+            background-color: transparent;
+            margin: auto;
 
-			& > * {
-				background-color: var(--accent-1);
-			}
+            & > * {
+                background-color: var(--accent-1);
+            }
 
-			#app-header {
-				background-color: transparent !important;
-				font-size: 3rem;
-				text-align: center;
-				text-shadow: 0.1em 0.025em 0.05em var(--accent-1);
-			}
+            #app-header {
+                background-color: transparent !important;
+                font-size: 3rem;
+                text-align: center;
+                text-shadow: 0.1em 0.025em 0.05em var(--accent-1);
+            }
 
-			.card-button,
-			.word-button {
-				background-color: transparent;
-				border: 0;
-				font-size: 0.85rem;
+            .card-button,
+            .word-button {
+                background-color: transparent;
+                border: 0;
+                font-size: 0.85rem;
 
-				&.card-button {
-					color: white !important;
-					padding: 0 3px;
+                &.card-button {
+                    color: white !important;
+                    padding: 0 3px;
 
-					&:hover {
-						color: var(--header-footer-text-color) !important;
-						cursor: pointer;
-					}
-				}
+                    &:hover {
+                        color: var(--header-footer-text-color) !important;
+                        cursor: pointer;
+                    }
+                }
 
-				&.word-button {
-					padding: 0;
+                &.word-button {
+                    padding: 0;
 
-					&:hover {
-						color: white;
-						cursor: pointer;
-					}
-				}
-			}
+                    &:hover {
+                        color: white;
+                        cursor: pointer;
+                    }
+                }
+            }
 
-			.card-name,
-			div:not(#lookup-card) > img {
-				&:hover {
-					cursor: pointer;
-				}
-			}
+            .card-name,
+            div:not(#lookup-card) > img {
+                &:hover {
+                    cursor: pointer;
+                }
+            }
 
-			#lookup-card > *:not(.trees-summary):not(select),
-			.common-words,
-			.custom-header,
-			#daily-stats-subheader,
-			#empty-custom,
-			#enter-cards,
-			#journal,
-			#phrases #lines #header,
-			#sign-in-screen,
-			.spread-words,
-			.word-button {
-				color: var(--header-footer-text-color);
-				font-weight: bold;
-				text-shadow: 0.15em 0.1em 0.1em var(--accent-2);
-			}
+            #lookup-card > *:not(.trees-summary):not(select),
+            .common-words,
+            .custom-header,
+            #daily-stats-subheader,
+            #empty-custom,
+            #enter-cards,
+            #journal,
+            #phrases #lines #header,
+            #sign-in-screen,
+            .spread-words,
+            .word-button {
+                color: var(--header-footer-text-color);
+                font-weight: bold;
+                text-shadow: 0.15em 0.1em 0.1em var(--accent-2);
+            }
 
-			#card-words-header {
-				margin-bottom: 30px;
-				text-align: center;
-			}
+            #card-words-header {
+                margin-bottom: 30px;
+                text-align: center;
+            }
 
-			.common-words,
-			#daily-stats-subheader {
-				padding: 15px 10px;
-			}
+            .common-words,
+            #daily-stats-subheader {
+                padding: 15px 10px;
+            }
 
-			.custom-header {
-				color: var(--header-footer-text-color);
-				font-family: Oswald, sans-serif;
-				text-align: center;
-				text-transform: uppercase;
+            .custom-header {
+                color: var(--header-footer-text-color);
+                font-family: Oswald, sans-serif;
+                text-align: center;
+                text-transform: uppercase;
 
-				&.dark {
-					background-color: var(--accent-2);
-				}
-			}
+                &.dark {
+                    background-color: var(--accent-2);
+                }
+            }
 
-			.custom-limit {
-				color: white;
-				text-decoration: underline;
-			}
+            .custom-limit {
+                color: white;
+                text-decoration: underline;
+            }
 
-			.dim {
-				color: var(--dim-color) !important;
-				font-weight: normal !important;
-			}
+            .dim {
+                color: var(--dim-color) !important;
+                font-weight: normal !important;
+            }
 
-			#empty-custom,
-			#enter-cards {
-				text-align: center;
+            #empty-custom,
+            #enter-cards {
+                text-align: center;
 
-				&#empty-custom {
-					padding: 10px 10px 30px;
-				}
+                &#empty-custom {
+                    padding: 10px 10px 30px;
+                }
 
-				&#enter-cards {
-					padding-top: 10px;
-				}
+                &#enter-cards {
+                    padding-top: 10px;
+                }
 
-				hr {
-					margin: 30px auto;
-				}
+                hr {
+                    margin: 30px auto;
+                }
 
-				#spread-size {
-					margin-bottom: 22px;
-				}
-			}
+                #spread-size {
+                    margin-bottom: 22px;
+                }
+            }
 
-			#empty-custom button,
-			#enter-cards-buttons button,
-			.flip-button,
-			#phrases #lines #header button,
-			.remove-line-button,
-			#sign-in-screen button,
-			#spread-size button,
-			.trees-summary button {
-				min-width: 100px;
-				border: 2px solid white !important;
-				border-radius: 3px;
+            #empty-custom button,
+            #enter-cards-buttons button,
+            .flip-button,
+            #phrases #lines #header button,
+            .remove-line-button,
+            #sign-in-screen button,
+            #spread-size button,
+            .trees-summary button {
+                min-width: 100px;
+                border: 2px solid white !important;
+                border-radius: 3px;
 
-				&:hover {
-					border-color: var(--accent-2) !important;
-				}
-			}
+                &:hover {
+                    border-color: var(--accent-2) !important;
+                }
+            }
 
-			#empty-custom button,
-			#enter-cards-buttons button,
-			.flip-button,
-			#navigation button,
-			#phrases #lines #header button,
-			.remove-line-button,
-			#sign-in-screen button,
-			#spread-size button,
-			.trees-summary button {
-				background-color: var(--box-color-1);
-				border: 0;
-				text-shadow: 0.15em 0.1em 0.1em var(--header-footer-text-color);
-				color: var(--accent-2);
-				font-family: Oswald, sans-serif;
-				font-weight: bold;
-				text-transform: uppercase;
+            #empty-custom button,
+            #enter-cards-buttons button,
+            .flip-button,
+            #navigation button,
+            #phrases #lines #header button,
+            .remove-line-button,
+            #sign-in-screen button,
+            #spread-size button,
+            .trees-summary button {
+                background-color: var(--box-color-1);
+                border: 0;
+                text-shadow: 0.15em 0.1em 0.1em var(--header-footer-text-color);
+                color: var(--accent-2);
+                font-family: Oswald, sans-serif;
+                font-weight: bold;
+                text-transform: uppercase;
 
-				&.active,
-				&:hover {
-					background-color: var(--accent-1);
-					color: var(--header-footer-text-color);
-					cursor: pointer;
-					text-shadow: 0.15em 0.1em 0.1em var(--accent-2);
-				}
-			}
+                &.active,
+                &:hover {
+                    background-color: var(--accent-1);
+                    color: var(--header-footer-text-color);
+                    cursor: pointer;
+                    text-shadow: 0.15em 0.1em 0.1em var(--accent-2);
+                }
+            }
 
-			h3.custom-header {
-				margin: 0;
-			}
+            h3.custom-header {
+                margin: 0;
+            }
 
-			hr {
-				height: 2px;
-				width: 40%;
-				background-color: var(--accent-2);
-				border: 0;
-			}
+            hr {
+                height: 2px;
+                width: 40%;
+                background-color: var(--accent-2);
+                border: 0;
+            }
 
-			img {
-				height: auto;
-				width: 100%;
-				border: 1px solid var(--accent-1);
-				border-radius: 10px;
-				padding: 2px;
-				// for alt text
-				text-align: center;
+            img {
+                height: auto;
+                width: 100%;
+                border: 1px solid var(--accent-1);
+                border-radius: 10px;
+                padding: 2px;
+                // for alt text
+                text-align: center;
+            }
 
-				&.reversed {
-					transform: rotate(180deg);
-				}
-			}
+            #lookup-card,
+            #lookup-word {
+                padding-top: 30px;
+                text-align: center;
 
-			#lookup-card,
-			#lookup-word {
-				padding-top: 30px;
-				text-align: center;
+                h3 {
+                    margin: 0;
+                }
 
-				h3 {
-					margin: 0;
-				}
+                hr {
+                    margin: 30px auto;
+                }
 
-				hr {
-					margin: 30px auto;
-				}
+                img {
+                    max-width: 200px;
+                    height: auto;
+                }
 
-				img {
-					max-width: 200px;
-					height: auto;
-				}
+                #no-words {
+                    padding: 0 10px 30px;
+                }
+            }
 
-				#no-words {
-					padding: 0 10px 30px;
-				}
-			}
+            select {
+                background-color: var(--box-color-1);
+                border: 0;
+                color: var(--accent-1);
+                font-size: 1.2rem;
+                padding: 0 10px;
+                text-align: center;
+            }
 
-			select {
-				background-color: var(--box-color-1);
-				border: 0;
-				color: var(--accent-1);
-				font-size: 1.2rem;
-				padding: 0 10px;
-				text-align: center;
-			}
+            #sign-in-screen button {
+                margin: 10px 0;
+            }
 
-			#sign-in-screen button {
-				margin: 10px 0;
-			}
+            #spread-size {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
 
-			#spread-size {
-				display: flex;
-				flex-direction: column;
-				gap: 20px;
+                & > * {
+                    max-width: 100px;
+                    margin: 0 auto;
+                }
+            }
 
-				& > * {
-					max-width: 100px;
-					margin: 0 auto;
-				}
-			}
+            #spread-container {
+                .tree-paths {
+                    padding-bottom: 24px;
+                }
+            }
 
-			#spread-container {
-				.tree-paths {
-					padding-bottom: 24px;
-				}
-			}
-
-			.tree-paths {
-				text-align: center;
-			}
-		}
-	}
+            .tree-paths {
+                text-align: center;
+            }
+        }
+    }
 }

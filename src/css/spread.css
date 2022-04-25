@@ -75,9 +75,35 @@
 #spread-container #phrases #lines .lines-item .phrases {
   height: 100%;
   width: 100%;
+  color: var(--accent-2);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  font-weight: bold;
   line-height: 1.5em;
   overflow: auto;
   padding: 0 15px;
+}
+
+#spread-container #phrases #lines .lines-item .phrases button {
+  background-color: #fff;
+  border: 0;
+  color: var(--header-footer-color);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+#spread-container #phrases #lines .lines-item .phrases button:hover {
+  background-color: var(--header-footer-color);
+  color: #fff;
+  cursor: pointer;
 }
 
 #spread-container #phrases #lines #footer,

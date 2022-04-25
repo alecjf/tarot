@@ -226,11 +226,6 @@ body #root .App img {
   text-align: center;
 }
 
-body #root .App img.reversed {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-
 body #root .App #lookup-card,
 body #root .App #lookup-word {
   padding-top: 30px;

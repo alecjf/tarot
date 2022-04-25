@@ -37,8 +37,6 @@ function Spread({
 		suitEntries = sortCountedEntries(cardNames, false);
 	}
 
-	console.log(cardNames);
-
 	function Phrases() {
 		return (
 			<div id="phrases">
