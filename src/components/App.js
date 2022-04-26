@@ -315,8 +315,10 @@ function App() {
                         copy["enter-cards"] = entered;
                     }
                 } else {
-                    copy["custom-spread"] = phrasesData(
-                        document.querySelector("#select-size").value
+                    copy["custom-spread"] = transformSpread(
+                        phrasesData(
+                            document.querySelector("#select-size").value
+                        )
                     );
                 }
                 setSpreads(copy);

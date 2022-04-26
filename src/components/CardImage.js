@@ -8,7 +8,7 @@ function CardImage({ cardName, cardLinkHandler }) {
                     ? (cardName.includes(" reversed")
                           ? "reversed/"
                           : "upright/") + flipUpright(cardName)
-                    : "blank"
+                    : "upright/blank"
             }.jpg`}
             alt={cardName || "blank card"}
             onClick={() => cardName && cardLinkHandler(cardName)}

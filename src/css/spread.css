@@ -93,6 +93,8 @@
 }
 
 #spread-container #phrases #lines .lines-item .phrases button {
+  height: 23px;
+  width: 23px;
   background-color: #fff;
   border: 0;
   color: var(--header-footer-color);
