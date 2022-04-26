@@ -95,13 +95,12 @@
 #spread-container #phrases #lines .lines-item .phrases button {
   height: 23px;
   width: 23px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   background-color: #fff;
   border: 0;
   color: var(--header-footer-color);
   font-size: 1.1rem;
   font-weight: bold;
+  padding: 0;
 }
 
 #spread-container #phrases #lines .lines-item .phrases button:hover {
