@@ -57,7 +57,7 @@ export default firestore;
 export {
     dateFormatter,
     writeDailySpread,
-    tomSpreads,
+    writeCustomSpreads,
     writeInJournal,
     writePlan,
 };
